@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Covid-19 PuntosCriticos</string>
+    <string name="information_login">INFORMACION Y BREVE RESUMEN DE LA APP</string>
+    <string name="api_key_nasa">an1IMjVwogVGhmgvr7f0BgEu6u2g3YRW5J2qisFf</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_map">Map</string>
+
+    <string name="menu_1">Cerrar session</string>
+    <string name="menu_0">NOMBRE DE USUARIO</string>
+
+
+    <!-- Activity Login -->
+    <string name="btn_login">Iniciar session</string>
+    <string name="btn_registro">registrarse</string>
+
+
+    <!-- Activity Registro -->
+    <string name="btn_registro_activity">REGISTARSE</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="home_second">Home Second</string>
+    <string name="title_notifications">Notifications</string>
+</resources>

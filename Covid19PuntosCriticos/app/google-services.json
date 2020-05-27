@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "431301963080",
+    "firebase_url": "https://covid19pcec-fcc18.firebaseio.com",
+    "project_id": "covid19pcec-fcc18",
+    "storage_bucket": "covid19pcec-fcc18.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:431301963080:android:56cae170c973034542977d",
+        "android_client_info": {
+          "package_name": "com.today.covid_19puntoscriticos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "431301963080-k6k74tta8ckeh8hd21mvd1gadl5u44f7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeoZRNSYIhFgErJvr3omPyH6Tm3NiPZK8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "431301963080-k6k74tta8ckeh8hd21mvd1gadl5u44f7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
