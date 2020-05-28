@@ -7,13 +7,16 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_map">Map</string>
 
-    <string name="menu_1">Cerrar session</string>
-    <string name="menu_0">NOMBRE DE USUARIO</string>
+    <!--Menu Session Enabled-->
+    <string name="menu_0">Name of User</string>
+    <string name="menu_1">My Test</string>
+    <string name="menu_2">My Status</string>
+    <string name="menu_3">Sign Out</string>
 
 
     <!-- Activity Login -->
-    <string name="btn_login">Iniciar session</string>
-    <string name="btn_registro">registrarse</string>
+    <string name="btn_login">Sign In</string>
+    <string name="btn_registro">Sign Up</string>
 
 
     <!-- Activity Registro -->
