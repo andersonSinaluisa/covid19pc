@@ -40,6 +40,9 @@ import androidx.navigation.ui.NavigationUI;
 
 import java.util.Objects;
 
+import static com.today.covid_19puntoscriticos.Preferences.MainPreference.id;
+import static com.today.covid_19puntoscriticos.Preferences.MainPreference.userdata;
+
 public class MainActivity extends AppCompatActivity {
 
     final Firebase db = new Firebase();
@@ -145,8 +148,11 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("USUARIOS",databaseError.getMessage());
             }
         });
+        if(!id(MainActivity.this).equals("")){
 
+            userdata(MainActivity.this,_email,name,provider,UID);
 
+        }
 
     }
 
@@ -159,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-   
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

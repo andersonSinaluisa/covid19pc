@@ -19,6 +19,9 @@
         </ImageView>
 
         <TextView
+            android:fontFamily="sans-serif-light"
+            android:textColor="#000000"
+            android:padding="10dp"
             android:id="@+id/text_info"
             android:text="informacion"
             android:layout_width="match_parent"

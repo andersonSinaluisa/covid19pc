@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Main.ui.home.HomeFragment">
 <GridView
+    android:layout_marginBottom="30dp"
     android:horizontalSpacing="5dp"
     tools:listitem="@layout/item_home_list"
     android:verticalSpacing="0dp"

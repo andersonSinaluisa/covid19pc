@@ -1,9 +1,12 @@
 package com.today.covid_19puntoscriticos.Main.ui.home;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -44,8 +47,22 @@ public class HomeFragment extends Fragment {
 
         cardList(root);
 
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Pages p = (Pages) adapter.getItem(position);
+                String url = p.getUrl();
+                Uri u = Uri.parse(url);
+                Intent intent = new Intent(Intent.ACTION_VIEW, u);
+                startActivity(intent);
+
+            }
+        });
+
         return root;
     }
+
+
 
     private void cardList(final View root) {
         final Firebase db = new Firebase();
