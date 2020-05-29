@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_margin="30dp"
+        android:background="@drawable/item_home"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_margin="10dp"
+            android:id="@+id/img_carview"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+        </ImageView>
+
+        <TextView
+            android:fontFamily="sans-serif-light"
+            android:textColor="#000000"
+            android:padding="10dp"
+            android:id="@+id/text_info"
+            android:text="informacion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </TextView>
+
+    </LinearLayout>
+
+</LinearLayout>

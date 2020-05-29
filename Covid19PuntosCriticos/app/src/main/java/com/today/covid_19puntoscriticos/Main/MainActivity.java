@@ -1,8 +1,15 @@
 package com.today.covid_19puntoscriticos.Main;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +24,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.today.covid_19puntoscriticos.Activities.AboutUs;
+import com.today.covid_19puntoscriticos.Activities.MyDiagnosis;
+import com.today.covid_19puntoscriticos.Activities.Poll;
 import com.today.covid_19puntoscriticos.Config.Firebase;
 import com.today.covid_19puntoscriticos.Model.Usuario;
 import com.today.covid_19puntoscriticos.R;
@@ -30,13 +40,15 @@ import androidx.navigation.ui.NavigationUI;
 
 import java.util.Objects;
 
+import static com.today.covid_19puntoscriticos.Preferences.MainPreference.id;
+import static com.today.covid_19puntoscriticos.Preferences.MainPreference.userdata;
+
 public class MainActivity extends AppCompatActivity {
 
     final Firebase db = new Firebase();
 
 
-    private TextView user;
-    private ImageView imageView;
+
 
     private FirebaseUser currentUser = null;
     @Override
@@ -46,11 +58,10 @@ public class MainActivity extends AppCompatActivity {
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
 
-        imageView = (ImageView) findViewById(R.id.img_user);
-        user = (TextView) findViewById(R.id.username);
 
 
-        loadDataInUI(currentUser);
+
+
         dataUser(currentUser.getUid(),currentUser.getEmail(),currentUser.getDisplayName(),currentUser.getPhotoUrl(),currentUser.getProviderId());
 
 
@@ -137,30 +148,47 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("USUARIOS",databaseError.getMessage());
             }
         });
+        if(!id(MainActivity.this).equals("")){
 
-
-
-    }
-
-    private void loadDataInUI(FirebaseUser currentUser) {
-
-        if(Objects.requireNonNull(currentUser.getDisplayName()).isEmpty()|| currentUser.getDisplayName()!=null){
-            user.setText(currentUser.getEmail());
-        }else{
-            user.setText(currentUser.getDisplayName());
+            userdata(MainActivity.this,_email,name,provider,UID);
 
         }
 
-        if(currentUser.getPhotoUrl()==null){
-            imageView.setBackground(getResources().getDrawable(R.drawable.ic_person));
+    }
 
-        }else{
-            Glide.with(MainActivity.this)
-                    .load(currentUser.getPhotoUrl().toString())
-                    .into(imageView);
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.session,menu);
+
+        return true;
+    }
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.myDiagnosis:
+                startActivity(new Intent(MainActivity.this, MyDiagnosis.class));
+                return true;
+            case R.id.poll:
+                startActivity(new Intent(MainActivity.this, Poll.class));
+                return true;
+            case R.id.aboutUs:
+                startActivity(new Intent(MainActivity.this, AboutUs.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
+    }
 
     }
 
-}
+
+
+
+
+

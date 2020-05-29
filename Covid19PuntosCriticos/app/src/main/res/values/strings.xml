@@ -7,16 +7,13 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_map">Map</string>
 
-    <!--Menu Session Enabled-->
-    <string name="menu_0">Name of User</string>
-    <string name="menu_1">My Test</string>
-    <string name="menu_2">My Status</string>
-    <string name="menu_3">Sign Out</string>
-
+    <string name="myDiagnosis">My Diagnosis</string>
+    <string name="Poll">Poll</string>
+    <string name="Info">Info</string>
 
     <!-- Activity Login -->
-    <string name="btn_login">Sign In</string>
-    <string name="btn_registro">Sign Up</string>
+    <string name="btn_login">Iniciar session</string>
+    <string name="btn_registro">registrarse</string>
 
 
     <!-- Activity Registro -->
@@ -35,4 +32,5 @@
 
     <string name="home_second">Home Second</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
