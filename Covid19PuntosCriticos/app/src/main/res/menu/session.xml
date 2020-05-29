@@ -27,6 +27,12 @@
                 android:orderInCategory="100"
                 android:title="@string/Info"
                 app:showAsAction="never" />
+            <item
+                android:icon="@drawable/ic_sign_out"
+                android:id="@+id/signOut"
+                android:orderInCategory="100"
+                android:title="@string/Sign_out"
+                app:showAsAction="never" />
         </menu>
 
 

@@ -10,10 +10,11 @@
     <string name="myDiagnosis">My Diagnosis</string>
     <string name="Poll">Poll</string>
     <string name="Info">Info</string>
+    <string name="Sign_out">Sign Out</string>
 
     <!-- Activity Login -->
-    <string name="btn_login">Iniciar session</string>
-    <string name="btn_registro">registrarse</string>
+    <string name="btn_login">Sign In</string>
+    <string name="btn_registro">Register</string>
 
 
     <!-- Activity Registro -->

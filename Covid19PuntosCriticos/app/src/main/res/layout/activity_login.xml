@@ -27,7 +27,7 @@
         tools:ignore="MissingConstraints">
 
         <TextView
-            android:textColor="@color/colorBlack"
+            android:textColor="#ffffff"
             android:gravity="center"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
@@ -51,10 +51,10 @@
         <EditText
             android:background="@drawable/edittext"
             android:id="@+id/loginEmail"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Correo electrónico"
+            android:hint="    E-mail"
             android:inputType="textEmailAddress"
             app:layout_constraintBottom_toTopOf="@+id/loginPassword"
             app:layout_constraintEnd_toEndOf="parent"
@@ -66,10 +66,10 @@
             android:background="@drawable/edittext"
             android:layout_marginTop="10dp"
             android:id="@+id/loginPassword"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Contraseña"
+            android:hint="    Password"
             android:inputType="textPassword"
             app:layout_constraintBottom_toTopOf="@+id/loginButton"
             app:layout_constraintEnd_toEndOf="parent"
@@ -88,22 +88,26 @@
         android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="25dp"
+        >
         <Button
             android:id="@+id/btn_login"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
+            android:background="@drawable/btn_login_first"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_margin="10dp"
+            android:textColor="#ffffff"
             android:text="@string/btn_login"/>
         <Button
             android:id="@+id/btn_registro"
-            style="@style/Widget.AppCompat.Button.Small"
+            android:background="@drawable/btn_login_second"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="16dp"
-            android:text="@string/btn_registro"/>
+            android:layout_margin="10dp"
+            android:textColor="#ffffff"
 
+            android:text="@string/btn_registro"/>
     </LinearLayout>
 
 
