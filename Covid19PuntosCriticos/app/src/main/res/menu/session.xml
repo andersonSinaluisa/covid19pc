@@ -3,13 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
     <item
-        android:id="@+id/nombre"
-        android:orderInCategory="100"
-        android:title="@string/menu_0"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/menu_1"
-        app:showAsAction="never" />
+        android:id="@+id/session"
+        android:icon="@drawable/ic_account"
+        android:title="account"
+        app:showAsAction="ifRoom"
+        >
+        <menu>
+            <item
+                android:id="@+id/myDiagnosis"
+                android:orderInCategory="100"
+                android:icon="@drawable/ic_my_diagnosis"
+                android:title="@string/myDiagnosis"
+                app:showAsAction="never" />
+            <item
+                android:icon="@drawable/ic_poll"
+                android:id="@+id/poll"
+                android:orderInCategory="100"
+                android:title="@string/Poll"
+                app:showAsAction="never" />
+            <item
+                android:icon="@drawable/ic_info"
+                android:id="@+id/aboutUs"
+                android:orderInCategory="100"
+                android:title="@string/Info"
+                app:showAsAction="never" />
+        </menu>
+
+
+
+    </item>
+
+
 </menu>

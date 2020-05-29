@@ -7,9 +7,9 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_map">Map</string>
 
-    <string name="menu_1">Cerrar session</string>
-    <string name="menu_0">NOMBRE DE USUARIO</string>
-
+    <string name="myDiagnosis">My Diagnosis</string>
+    <string name="Poll">Poll</string>
+    <string name="Info">Info</string>
 
     <!-- Activity Login -->
     <string name="btn_login">Iniciar session</string>
