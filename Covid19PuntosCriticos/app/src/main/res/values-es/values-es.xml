@@ -1,23 +1,23 @@
-<resources>
-    <string name="app_name">Covid-19 PuntosCriticos</string>
+<?xml version="1.0" encoding="utf-8"?>
+<resources> <string name="app_name">Covid-19 PuntosCriticos</string>
     <string name="information_login">INFORMACION Y BREVE RESUMEN DE LA APP</string>
     <string name="api_key_nasa">an1IMjVwogVGhmgvr7f0BgEu6u2g3YRW5J2qisFf</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_map">Map</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_dashboard">Tablero</string>
+    <string name="title_map">Mapa</string>
 
-    <string name="myDiagnosis">My Diagnosis</string>
-    <string name="Poll">Poll</string>
+    <string name="myDiagnosis">Mi Diagnostico</string>
+    <string name="Poll">Encuesta</string>
     <string name="Info">Info</string>
 
     <!-- Activity Login -->
-    <string name="btn_login">Log in</string>
-    <string name="btn_registro">Sign up</string>
+    <string name="btn_login">Iniciar session</string>
+    <string name="btn_registro">registrarse</string>
 
 
     <!-- Activity Registro -->
-    <string name="btn_registro_activity">Sign up</string>
+    <string name="btn_registro_activity">REGISTARSE</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -33,22 +33,20 @@
     <string name="home_second">Home Second</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_maps">Map</string>
-
-    <string name="yes">Yes</string>
+    <string name="yes">Si</string>
     <string name="No">No</string>
 
     <!-- MENU -->
-    <string name="account">account</string>
-
+    <string name="account">cuenta</string>
 
 
     <!-- POLL-->
-    <string name="diseases">indicate if you have any of these diseases</string>
-    <string name="symptoms">have you felt any of these symptoms today?</string>
-    <string name="basicInfo">answer these basic information questions</string>
-
-
+    <string name="diseases">indica si padeces alguna de estas enfermedades</string>
+    <string name="symptoms">has sentido alguno de estos síntomas hoy?</string>
+    <string name="basicInfo">responde estas preguntas de informacion basica</string>
 
     <!--DASHBOARD-->
-    <string name="textMainDashboard">COVID-19 Global Statisticsl</string>
+    <string name="textMainDashboard">COVID-19 Estadistica Global</string>
 </resources>
+
+
