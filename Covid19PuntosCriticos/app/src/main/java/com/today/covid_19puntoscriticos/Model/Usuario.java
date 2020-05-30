@@ -6,17 +6,21 @@ public class Usuario {
     private String email;
     private String photo_url;
     private String provider;
+    private String edad;
+    private String genr;
 
     public  Usuario(){
 
     }
 
-    public Usuario(String UID, String name, String email, String photo_url, String provider) {
+    public Usuario(String UID, String name, String email, String photo_url, String provider, String age, String edad) {
         this.UID = UID;
         this.name = name;
         this.email = email;
         this.provider=provider;
         this.photo_url = photo_url;
+        this.edad = edad;
+        this.genr = genr;
     }
 
     public String getUID() {
@@ -58,4 +62,21 @@ public class Usuario {
     public void setProvider(String provider) {
         this.provider = provider;
     }
+
+    public String getEdad() {
+        return edad;
+    }
+
+    public void setEdad(String edad) {
+        this.edad = edad;
+    }
+
+    public String getGenr() {
+        return genr;
+    }
+
+    public void setGenr(String genr) {
+        this.genr = genr;
+    }
 }
+

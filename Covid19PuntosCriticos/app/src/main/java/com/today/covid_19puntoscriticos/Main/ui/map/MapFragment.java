@@ -4,8 +4,10 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +21,12 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.today.covid_19puntoscriticos.R;
 import com.today.covid_19puntoscriticos.Services.ServicesUbication;
 
@@ -33,6 +38,7 @@ public class MapFragment extends Fragment  implements GoogleMap.OnCameraIdleList
     private MapView mMapView;
     private GoogleMap mMap;
 
+    View contextView = null;
     private int permissionchecked;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -69,11 +75,24 @@ public class MapFragment extends Fragment  implements GoogleMap.OnCameraIdleList
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-
+        mMap = googleMap;
+        mMap.setBuildingsEnabled(false);
+        mMap.setMaxZoomPreference(15);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(19.420925, -99.142559), 3));
+        mMap.setOnCameraIdleListener(this);
+        try {
+            // Customise the styling of the base map using a JSON object defined
+            // in a raw resource file.
+            mMap.setMapStyle(
+                    MapStyleOptions.loadRawResourceStyle(contextView.getContext(), R.raw.raw));
+        } catch (Resources.NotFoundException e) {
+            Log.d("EnriqueLC", e.toString());
+        }
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        contextView = view;
         mMapView = view.findViewById(R.id.mapView);
         mMapView.onCreate(savedInstanceState);
         mMapView.onResume();

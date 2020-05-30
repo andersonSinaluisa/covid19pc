@@ -145,8 +145,6 @@ public class BasicInfo extends AppCompatActivity {
             EditText e = (EditText) questionLayout.findViewById(R.id.respuesta);
 
 
-
-
             layout.addView(questionLayout);
             m.put(p.getId().toString(),e.getText());
         }

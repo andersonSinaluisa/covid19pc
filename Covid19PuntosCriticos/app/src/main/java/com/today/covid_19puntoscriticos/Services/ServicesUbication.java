@@ -20,9 +20,11 @@ public class ServicesUbication extends Service {
     private Context thisContext = this;
     private String email ;
     private String username ;
+    private String id;
+
     private double longitud = 0;
     private double latitud = 0;
-
+    private boolean validatorSymptoms;
 
     @Override
     public void onCreate() {
@@ -67,10 +69,10 @@ public class ServicesUbication extends Service {
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
 
             if(longitud!=0 && latitud!=0){
+                if(validatorSymptoms){
 
 
-
-
+                }
             }
 
         }
@@ -88,6 +90,10 @@ public class ServicesUbication extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
+
         return null;
     }
+
+
+
 }

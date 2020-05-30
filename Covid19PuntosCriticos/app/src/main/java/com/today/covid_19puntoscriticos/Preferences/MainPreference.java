@@ -19,6 +19,9 @@ public class MainPreference {
             edit.commit();
 
     }
+
+
+
     public static String email(Context c){
         SharedPreferences sharedPref= c.getSharedPreferences(c.getString(R.string.app_name), c.MODE_PRIVATE);
         return sharedPref.getString("email","");
@@ -30,5 +33,18 @@ public class MainPreference {
     public static String id(Context c){
         SharedPreferences sharedPref= c.getSharedPreferences(c.getString(R.string.app_name), c.MODE_PRIVATE);
         return sharedPref.getString("id","");
+    }
+
+    public static void ageData(Context c, String age){
+
+        SharedPreferences sharedPref= c.getSharedPreferences(c.getString(R.string.app_name), c.MODE_PRIVATE);
+        SharedPreferences.Editor edit =sharedPref.edit();
+        edit.putString("age",age);
+        edit.commit();
+
+    }
+    public static String getAge(Context c){
+        SharedPreferences sharedPref= c.getSharedPreferences(c.getString(R.string.app_name), c.MODE_PRIVATE);
+        return sharedPref.getString("age","");
     }
 }

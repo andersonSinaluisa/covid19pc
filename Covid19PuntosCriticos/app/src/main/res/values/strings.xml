@@ -53,4 +53,7 @@
 
     <!-- Mensaje -->
     <string name="saving">Saving</string>
+    <string name="edad">Range range</string>
+    <string name="genr">Gender</string>
+
 </resources>

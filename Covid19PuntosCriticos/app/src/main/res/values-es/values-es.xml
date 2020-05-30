@@ -50,6 +50,10 @@
 
     <!-- Mensaje -->
     <string name="saving">Guardando</string>
+
+
+    <string name="edad">Rango de edad</string>
+    <string name="genr">Genero</string>
 </resources>
 
 
