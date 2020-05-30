@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,6 +29,7 @@ import com.today.covid_19puntoscriticos.R;
 import java.util.HashMap;
 import java.util.UUID;
 
+import static com.today.covid_19puntoscriticos.Preferences.MainPreference.basicInfo;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.id;
 
 public class BasicInfo extends AppCompatActivity {
@@ -38,6 +40,9 @@ public class BasicInfo extends AppCompatActivity {
     final Firebase db = new Firebase();
 
     private ProgressDialog dialog ;
+
+
+    private int total;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,14 +61,19 @@ public class BasicInfo extends AppCompatActivity {
                 dialog.setTitle(getResources().getString(R.string.saving));
                 dialog.setCancelable(false);
                 dialog.show();
-                if(!m.isEmpty()){
+                if(m.size()==total ){
 
                     m.put("id", UUID.randomUUID().toString());
                     m.put("id_usuario",id(BasicInfo.this));
                     final DatabaseReference poll = db.getmDatabase("BasicInfo");
                     poll.child(m.get("id").toString()).setValue(m);
+                    basicInfo(BasicInfo.this, true);
                     dialog.dismiss();
                     startActivity(new Intent(BasicInfo.this, MainActivity.class));
+                }else {
+
+                    dialog.dismiss();
+                    Toast.makeText(BasicInfo.this, getResources().getString(R.string.vacios), Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -79,6 +89,7 @@ public class BasicInfo extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
                     for(DataSnapshot obj : dataSnapshot.getChildren()){
+                        total=(int) dataSnapshot.getChildrenCount();
                         Preguntas p = obj.getValue(Preguntas.class);
                         if(p.isEstado()){
 

@@ -54,6 +54,9 @@
 
     <string name="edad">Rango de edad</string>
     <string name="genr">Genero</string>
+
+
+    <string name="vacios">por favor responde las preguntas</string>
 </resources>
 
 

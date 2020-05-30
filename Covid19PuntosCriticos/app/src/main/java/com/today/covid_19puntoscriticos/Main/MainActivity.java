@@ -52,13 +52,16 @@ import java.util.Objects;
 
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.ageData;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getAge;
+import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getBasicInfo;
+import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getDiseases;
+import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getPoll;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.id;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.userdata;
 
 public class MainActivity extends AppCompatActivity {
 
     final Firebase db = new Firebase();
-    private boolean diseasesValidator;
+
     private boolean pollValidator;
     private boolean basicInfoValidator;
 
@@ -111,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        loadDiseasesAnswer();
+
         loadPoll();
         loadBasicInfo();
 
@@ -302,27 +305,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void loadDiseasesAnswer() {
-        final DatabaseReference diseases = db.getmDatabase("Diseases");
-        Query q = diseases.orderByChild("id_usuario").equalTo(id(MainActivity.this));
-        q.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-           if(dataSnapshot.exists()){
-               diseasesValidator = true;
-           }else{
-               diseasesValidator = false;
-           }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-    }
 
     @Override
     protected void onStart() {
@@ -420,13 +402,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, MyDiagnosis.class));
                 return true;
             case R.id.poll:
-                if(!diseasesValidator){
+                if(!getDiseases(MainActivity.this)){
                     startActivity(new Intent(MainActivity.this, Diseases.class));
                 }else{
-                    if(!pollValidator){
+                    if(!getPoll(MainActivity.this)){
                         startActivity(new Intent(MainActivity.this, Poll.class));
                     }else {
-                        if(!basicInfoValidator){
+                        if(!getBasicInfo(MainActivity.this)){
                             startActivity(new Intent(MainActivity.this, BasicInfo.class));
                         }else {
                             startActivity(new Intent(MainActivity.this, Diseases.class));

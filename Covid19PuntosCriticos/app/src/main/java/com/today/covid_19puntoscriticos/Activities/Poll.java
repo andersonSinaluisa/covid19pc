@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,6 +36,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.id;
+import static com.today.covid_19puntoscriticos.Preferences.MainPreference.poll;
 
 public class Poll extends AppCompatActivity {
 
@@ -50,6 +52,7 @@ public class Poll extends AppCompatActivity {
     //se guardan las respuestas
     HashMap<String,Object> m = new HashMap<String, Object>();
 
+    private int total;
 
 
     private ProgressDialog dialog ;
@@ -76,14 +79,20 @@ public class Poll extends AppCompatActivity {
                 dialog.setCancelable(false);
                 dialog.show();
 
-                if(!m.isEmpty()){
+                if(!m.isEmpty() || m.size()==total){
 
                     m.put("id", UUID.randomUUID().toString());
                     m.put("id_usuario",id(Poll.this));
+
                     final DatabaseReference poll = db.getmDatabase("Poll");
                     poll.child(m.get("id").toString()).setValue(m);
+                    poll(Poll.this,true);
                     dialog.dismiss();
                     startActivity(new Intent(Poll.this, MainActivity.class));
+                }else {
+                    dialog.dismiss();
+
+                    Toast.makeText(Poll.this, getResources().getString(R.string.vacios), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -108,9 +117,11 @@ public class Poll extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //si existen datos en la referencia
                 if(dataSnapshot.exists()){
+                    total = (int) dataSnapshot.getChildrenCount();
                     //recorre con un for each
                     for(DataSnapshot obj : dataSnapshot.getChildren()){
                         //la clase que recibira estos datos
+
                      Preguntas p = obj.getValue(Preguntas.class);
                      //si es estado es true
                      if(p.isEstado()){

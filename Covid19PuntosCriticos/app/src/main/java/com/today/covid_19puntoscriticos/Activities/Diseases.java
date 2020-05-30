@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,6 +29,7 @@ import com.today.covid_19puntoscriticos.R;
 import java.util.HashMap;
 import java.util.UUID;
 
+import static com.today.covid_19puntoscriticos.Preferences.MainPreference.diseases;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.id;
 
 public class Diseases extends AppCompatActivity {
@@ -42,6 +44,8 @@ public class Diseases extends AppCompatActivity {
 
     private ProgressDialog dialog ;
 
+
+    private int total;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +63,7 @@ public class Diseases extends AppCompatActivity {
                 dialog.setTitle(getResources().getString(R.string.saving));
                 dialog.setCancelable(false);
                 dialog.show();
-                if(!m.isEmpty()){
+                if(m.size()==total){
 
                     m.put("id", UUID.randomUUID().toString());
                     m.put("id_usuario",id(Diseases.this));
@@ -67,6 +71,11 @@ public class Diseases extends AppCompatActivity {
                     poll.child(m.get("id").toString()).setValue(m);
                     dialog.dismiss();
                     startActivity(new Intent(Diseases.this, MainActivity.class));
+                    diseases(Diseases.this,true);
+                }else {
+                    dialog.dismiss();
+
+                    Toast.makeText(Diseases.this, getResources().getString(R.string.vacios), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -83,6 +92,7 @@ public class Diseases extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
+                    total=(int) dataSnapshot.getChildrenCount();
                     for(DataSnapshot obj : dataSnapshot.getChildren()){
                         Preguntas p = obj.getValue(Preguntas.class);
 

@@ -7,7 +7,7 @@ public class HistorialPosition {
     private String id_usuario;
 
 
-    private HistorialPosition(){
+    public HistorialPosition(){
 
     }
 

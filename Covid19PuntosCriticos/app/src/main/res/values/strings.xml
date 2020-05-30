@@ -56,4 +56,7 @@
     <string name="edad">Range range</string>
     <string name="genr">Gender</string>
 
+
+    <string name="vacios">please answer the questions</string>
+
 </resources>
