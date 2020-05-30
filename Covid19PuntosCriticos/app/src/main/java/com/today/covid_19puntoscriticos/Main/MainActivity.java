@@ -25,6 +25,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.today.covid_19puntoscriticos.Activities.AboutUs;
+import com.today.covid_19puntoscriticos.Activities.BasicInfo;
+import com.today.covid_19puntoscriticos.Activities.Diseases;
 import com.today.covid_19puntoscriticos.Activities.MyDiagnosis;
 import com.today.covid_19puntoscriticos.Activities.Poll;
 import com.today.covid_19puntoscriticos.Config.Firebase;
@@ -46,7 +48,9 @@ import static com.today.covid_19puntoscriticos.Preferences.MainPreference.userda
 public class MainActivity extends AppCompatActivity {
 
     final Firebase db = new Firebase();
-
+    private boolean diseasesValidator;
+    private boolean pollValidator;
+    private boolean basicInfoValidator;
 
 
 
@@ -78,7 +82,76 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        loadDiseasesAnswer();
+        loadPoll();
+        loadBasicInfo();
 
+
+    }
+
+    private void loadBasicInfo() {
+        final DatabaseReference diseases = db.getmDatabase("BasicInfo");
+        Query q = diseases.orderByChild("id_usuario").equalTo(id(MainActivity.this));
+        q.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    basicInfoValidator = true;
+                }else{
+                    basicInfoValidator = false;
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void loadPoll() {
+        final DatabaseReference diseases = db.getmDatabase("Poll");
+        Query q = diseases.orderByChild("id_usuario").equalTo(id(MainActivity.this));
+        q.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    pollValidator = true;
+                }else{
+                    pollValidator = false;
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+
+    private void loadDiseasesAnswer() {
+        final DatabaseReference diseases = db.getmDatabase("Diseases");
+        Query q = diseases.orderByChild("id_usuario").equalTo(id(MainActivity.this));
+        q.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+           if(dataSnapshot.exists()){
+               diseasesValidator = true;
+           }else{
+               diseasesValidator = false;
+           }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
     }
 
@@ -125,11 +198,6 @@ public class MainActivity extends AppCompatActivity {
                            }
 
 
-
-
-
-
-
                     }
                 }else{
                     //si es el primer registro de toda la tabla
@@ -148,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("USUARIOS",databaseError.getMessage());
             }
         });
-        if(!id(MainActivity.this).equals("")){
+        if(id(MainActivity.this).equals("")){
 
             userdata(MainActivity.this,_email,name,provider,UID);
 
@@ -167,6 +235,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId())
@@ -175,7 +246,22 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, MyDiagnosis.class));
                 return true;
             case R.id.poll:
-                startActivity(new Intent(MainActivity.this, Poll.class));
+                if(!diseasesValidator){
+                    startActivity(new Intent(MainActivity.this, Diseases.class));
+                }else{
+                    if(!pollValidator){
+                        startActivity(new Intent(MainActivity.this, Poll.class));
+                    }else {
+                        if(!basicInfoValidator){
+                            startActivity(new Intent(MainActivity.this, BasicInfo.class));
+                        }else {
+                            startActivity(new Intent(MainActivity.this, Diseases.class));
+                        }
+                    }
+
+                }
+
+
                 return true;
             case R.id.aboutUs:
                 startActivity(new Intent(MainActivity.this, AboutUs.class));

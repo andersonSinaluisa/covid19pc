@@ -44,9 +44,12 @@
     <string name="diseases">indica si padeces alguna de estas enfermedades</string>
     <string name="symptoms">has sentido alguno de estos síntomas hoy?</string>
     <string name="basicInfo">responde estas preguntas de informacion basica</string>
-
+    <string name="save_poll">Guardar</string>
     <!--DASHBOARD-->
     <string name="textMainDashboard">COVID-19 Estadistica Global</string>
+
+    <!-- Mensaje -->
+    <string name="saving">Guardando</string>
 </resources>
 
 

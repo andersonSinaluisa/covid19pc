@@ -4,49 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.Poll">
-
+    tools:context=".Activities.BasicInfo">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-
         <LinearLayout
-            android:id="@+id/layoutMain"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
 
 
             <TextView
                 android:textColor="@color/colorAccent"
                 android:layout_margin="5dp"
                 android:fontFamily="sans-serif-black"
-                android:text="@string/symptoms"
+                android:text="@string/basicInfo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
             </TextView>
             <LinearLayout
                 android:orientation="vertical"
-                android:id="@+id/layoutSymptoms"
+                android:id="@+id/layoutBasicInfo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
             </LinearLayout>
 
-
-
             <Button
                 android:text="@string/save_poll"
-                android:id="@+id/btn_save_poll"
+                android:id="@+id/btn_save_basicinfo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
             </Button>
-
         </LinearLayout>
-
     </ScrollView>
+
+
 </LinearLayout>

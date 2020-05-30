@@ -7,7 +7,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -22,52 +21,34 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.today.covid_19puntoscriticos.Config.Firebase;
-import com.today.covid_19puntoscriticos.LoginActivity;
 import com.today.covid_19puntoscriticos.Main.MainActivity;
 import com.today.covid_19puntoscriticos.Model.Preguntas;
 import com.today.covid_19puntoscriticos.R;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.id;
 
-public class Poll extends AppCompatActivity {
+public class BasicInfo extends AppCompatActivity {
 
-    private LinearLayout main;
-
-    private LinearLayout layoutSymptoms;
-
+    private LinearLayout layoutBasicInfo;
     private Button btn;
-
-
-    final Firebase db = new Firebase();
-
-    //se guardan las respuestas
     HashMap<String,Object> m = new HashMap<String, Object>();
-
-
+    final Firebase db = new Firebase();
 
     private ProgressDialog dialog ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_poll);
-        main=(LinearLayout) findViewById(R.id.layoutMain);
+        setContentView(R.layout.activity_basic_info);
+        layoutBasicInfo=(LinearLayout)findViewById(R.id.layoutBasicInfo);
+        btn = (Button) findViewById(R.id.btn_save_basicinfo);
+
+        loadInfo();
 
 
-        layoutSymptoms=(LinearLayout) findViewById(R.id.layoutSymptoms);
-        btn = (Button) findViewById(R.id.btn_save_poll);
-        dialog= new ProgressDialog(Poll.this);
-
-
-        //preguntas de los sintomas
-        loadSymptoms();
-
+        dialog= new ProgressDialog(BasicInfo.this);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,49 +56,37 @@ public class Poll extends AppCompatActivity {
                 dialog.setTitle(getResources().getString(R.string.saving));
                 dialog.setCancelable(false);
                 dialog.show();
-
                 if(!m.isEmpty()){
 
                     m.put("id", UUID.randomUUID().toString());
-                    m.put("id_usuario",id(Poll.this));
-                    final DatabaseReference poll = db.getmDatabase("Poll");
+                    m.put("id_usuario",id(BasicInfo.this));
+                    final DatabaseReference poll = db.getmDatabase("BasicInfo");
                     poll.child(m.get("id").toString()).setValue(m);
                     dialog.dismiss();
-                    startActivity(new Intent(Poll.this, MainActivity.class));
+                    startActivity(new Intent(BasicInfo.this, MainActivity.class));
                 }
+
             }
         });
 
-
     }
 
-
-
-
-
-
-
-    private void loadSymptoms() {
-        //crear una referencia
+    private void loadInfo() {
         final DatabaseReference referenceQuestions = db.getmDatabase("Preguntas");
-        //crea un query
-        Query q = referenceQuestions.orderByChild("categoria").equalTo("sintomas");
-        //ejecuta la consulta
+        Query q = referenceQuestions.orderByChild("categoria").equalTo("informacion");
         q.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //si existen datos en la referencia
                 if(dataSnapshot.exists()){
-                    //recorre con un for each
                     for(DataSnapshot obj : dataSnapshot.getChildren()){
-                        //la clase que recibira estos datos
-                     Preguntas p = obj.getValue(Preguntas.class);
-                     //si es estado es true
-                     if(p.isEstado()){
-                         //se muestra en la pantalla
-                         loadQuestions(p,layoutSymptoms);
-                     }
-                        System.out.println(p.getId()+"==>"+p.getDescripcion());
+                        Preguntas p = obj.getValue(Preguntas.class);
+                        if(p.isEstado()){
+
+                            loadQuestions(p,layoutBasicInfo);
+
+
+                        }
+
                     }
                 }
             }
@@ -128,16 +97,10 @@ public class Poll extends AppCompatActivity {
             }
         });
 
+
+
     }
 
-
-
-
-
-
-
-
-    //cargar las preguntas en el layout
     private void loadQuestions(final Preguntas p, LinearLayout layout) {
 
         if(p.getTipo().equals("radio")){
@@ -155,7 +118,7 @@ public class Poll extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                m.put(p.getId().toString(),true);
+                    m.put(p.getId().toString(),true);
 
                 }
             });
@@ -196,4 +159,5 @@ public class Poll extends AppCompatActivity {
 
 
     }
+
 }

@@ -31,6 +31,8 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.today.covid_19puntoscriticos.R;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 
@@ -41,20 +43,16 @@ public class DashboardFragment extends Fragment {
     private  int[]sale=new int[]{17,14,12,10,15};
     private  int[]colors=new int[]{Color.BLACK,Color.RED,Color.GREEN,Color.BLUE,Color.LTGRAY};
 
-    private DashboardViewModel dashboardViewModel;
 
+    private TextView textView;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                ViewModelProviders.of(this).get(DashboardViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        final TextView textView = root.findViewById(R.id.text_dashboard);
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
+        textView =(TextView)root.findViewById(R.id.text_dashboard);
+
+        textView.setText(getResources().getString(R.string.textMainDashboard));
 
         barChart=root.findViewById(R.id.barChart);
         pieChart=root.findViewById(R.id.pieChart);

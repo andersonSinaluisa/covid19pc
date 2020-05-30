@@ -53,8 +53,6 @@ public class MapFragment extends Fragment  implements GoogleMap.OnCameraIdleList
             //inicia el servicio
             getActivity().startService(new Intent(root.getContext(), ServicesUbication.class));
         }else{
-
-
             ActivityCompat.requestPermissions(getActivity(),
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     1);

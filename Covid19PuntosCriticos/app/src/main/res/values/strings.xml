@@ -41,14 +41,16 @@
     <string name="account">account</string>
 
 
-
     <!-- POLL-->
     <string name="diseases">indicate if you have any of these diseases</string>
     <string name="symptoms">have you felt any of these symptoms today?</string>
     <string name="basicInfo">answer these basic information questions</string>
-
+    <string name="save_poll">Save</string>
 
 
     <!--DASHBOARD-->
     <string name="textMainDashboard">COVID-19 Global Statisticsl</string>
+
+    <!-- Mensaje -->
+    <string name="saving">Saving</string>
 </resources>

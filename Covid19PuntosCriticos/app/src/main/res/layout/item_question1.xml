@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:columnCount="3"
+        android:columnOrderPreserved="true"
+        android:rowCount="1"
+        android:alignmentMode="alignMargins"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        >
+
+        <TextView
+            android:id="@+id/questionBase"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/activity_vertical_margin"
+            android:layout_columnWeight="1"
+            android:text="Diabetes" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupBase"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+            <RadioButton
+                android:id="@+id/answerBaseLeft"
+                android:layout_marginRight="5dp"
+                android:textDirection="locale"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </RadioButton>
+            <RadioButton
+
+                android:id="@+id/answerBaseRight"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </RadioButton>
+
+
+        </RadioGroup>
+
+    </GridLayout>
+
+</LinearLayout>

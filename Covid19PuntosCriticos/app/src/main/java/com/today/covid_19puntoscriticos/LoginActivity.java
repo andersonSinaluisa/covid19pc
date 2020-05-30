@@ -3,6 +3,7 @@ package com.today.covid_19puntoscriticos;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText email;
     private EditText password;
     private Button btn_login;
-
+    private ProgressDialog dialog ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         password=(EditText) findViewById(R.id.loginPassword);
         btn_registro = (Button) findViewById(R.id.btn_registro);
         btn_login =(Button) findViewById(R.id.btn_login);
-
+        dialog= new ProgressDialog(LoginActivity.this);
 
 
 
@@ -45,16 +46,21 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                dialog.setTitle(getResources().getString(R.string.saving));
+                dialog.setCancelable(false);
+                dialog.show();
                 String _email = email.getText().toString();
                 final String passwordText = password.getText().toString();
                 if (_email.isEmpty()) {
+                    dialog.dismiss();
                     email.setError("Por favor ingresa un email");
                     email.requestFocus();
                 } else if (passwordText.isEmpty()) {
+                    dialog.dismiss();
                     password.setError("Por favor ingresa una contraseña");
                     password.requestFocus();
                 } else if (passwordText.isEmpty() && _email.isEmpty()) {
+                    dialog.dismiss();
                     Toast.makeText(LoginActivity.this, "Campos vacíos favor de llenar", Toast.LENGTH_SHORT).show();
                 } else {
                     firebaseAuth.signInWithEmailAndPassword(_email, passwordText).addOnCompleteListener(
@@ -64,8 +70,10 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
 
                                     if (task.isSuccessful()) {
+                                        dialog.dismiss();
                                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                     } else {
+                                        dialog.dismiss();
                                         Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 }
