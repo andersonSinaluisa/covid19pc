@@ -9,9 +9,9 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
-    <application
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
+    <application
         android:name=".Config.Firebase"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,8 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".Activities.BasicInfo"></activity>
+        <activity android:name=".Activities.BasicInfo" />
         <activity android:name=".Activities.Diseases" />
 
         <meta-data
@@ -33,7 +32,9 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_name"
-            android:noHistory="true">
+            android:noHistory="true"/>
+        <activity android:name=".SplashScree"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,8 +45,8 @@
         <activity
             android:name=".RegistroActivity"
             android:label="@string/app_name" />
-        
-        <service android:name=".Services.ServicesUbication"/>
+
+        <service android:name=".Services.ServicesUbication" />
     </application>
 
 </manifest>

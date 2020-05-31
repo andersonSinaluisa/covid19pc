@@ -20,14 +20,24 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:textAlignment="center"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/pieChart"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
+            android:layout_height="300dp"
+
             android:layout_weight="1" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_weight="1"
+
+            android:id="@+id/lineChart"/>
 
 
 
@@ -47,14 +57,14 @@
         android:paddingBottom="25sp"
         android:paddingLeft="25sp"
         android:paddingRight="25sp"
-        android:paddingTop="25sp">
+        android:paddingTop="15sp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:id="@+id/tvLabelTotalConfirmed"
             android:textColor="#000000"
-            android:textSize="15sp"
+            android:textSize="10sp"
             tools:text="162387"
             android:paddingBottom="16dp"
             android:paddingLeft="16dp"
@@ -66,7 +76,7 @@
             android:textAlignment="center"
             android:id="@+id/tvTotalDeaths"
             android:textColor="#ff0000"
-            android:textSize="15sp"
+            android:textSize="10sp"
             tools:text="75648"
             android:paddingBottom="16dp"
             android:paddingLeft="16dp"
@@ -78,7 +88,7 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:textColor="#024A86"
-            android:textSize="15sp"
+            android:textSize="10sp"
             android:id="@+id/tvTotalRecovered"
             tools:text="75938"
             android:paddingBottom="16dp"
@@ -88,5 +98,14 @@
 
 
     </LinearLayout>
+
+    <ProgressBar
+        android:layout_centerInParent="true"
+        android:id="@+id/progress_circular_home"
+        android:indeterminate="true"
+        android:indeterminateDrawable="@drawable/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 
 </RelativeLayout>

@@ -2,6 +2,7 @@ package com.today.covid_19puntoscriticos.Main.ui.dashboard;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.ProgressBar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,24 +21,23 @@ import androidx.lifecycle.ViewModelProviders;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.Chart;
+import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.LegendEntry;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.DataSet;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.today.covid_19puntoscriticos.R;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -46,10 +46,11 @@ import java.util.ArrayList;
 
 public class DashboardFragment extends Fragment {
     private PieChart pieChart;
-    //private BarChart barChart;
+    private LineChart lineChart;
+    private ProgressBar progressBar;
     private TextView tvTotalConfirmed, tvTotalDeaths, tvTotalRecovered, tvLasUpdated;
     private  String[]months=new String[]{"CONFIRMADOS","MUERTOS","RECUPERADOS",};
-    private  int[]sale=new int[]{17,14,12};
+    private  int[]sale = new int[]{90,50,70};
     private  int[]colors=new int[]{Color.BLACK,Color.RED,Color.BLUE};
     private DashboardViewModel dashboardViewModel;
 
@@ -67,9 +68,9 @@ public class DashboardFragment extends Fragment {
         });
         tvTotalConfirmed=root.findViewById(R.id.tvLabelTotalConfirmed);
         tvTotalDeaths=root.findViewById(R.id.tvTotalDeaths);
-        tvTotalRecovered=root.findViewById(R.id.tvTotalRecovered);;
-
-        //barChart=root.findViewById(R.id.barChart);
+        tvTotalRecovered=root.findViewById(R.id.tvTotalRecovered);
+        lineChart = root.findViewById(R.id.lineChart);
+        progressBar=root.findViewById(R.id.progress_circular_home);
         pieChart=root.findViewById(R.id.pieChart);
 
         createCharts();
@@ -79,13 +80,14 @@ public class DashboardFragment extends Fragment {
 
     private void getData() {
         RequestQueue queue= Volley.newRequestQueue(getActivity());
-
-        String url="https://corona.lmao.ninja/v2/all";
+        final String url="https://corona.lmao.ninja/v2/all";
         StringRequest stringRequest= new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+
             @Override
             public void onResponse(String response) {
-
+                progressBar.setVisibility(View.GONE);
                 try {
+
                     JSONObject jsonObject = new JSONObject(response.toString());
                     tvTotalConfirmed.setText(jsonObject.getString("cases"));
                     tvTotalDeaths.setText(jsonObject.getString("deaths"));
@@ -98,6 +100,7 @@ public class DashboardFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressBar.setVisibility(View.GONE);
                 Log.d("ERROR RESPUESTA",error.toString());
             }
         });
@@ -107,7 +110,7 @@ public class DashboardFragment extends Fragment {
     private Chart getSameChart(Chart chart, String descripcion, int textColor, int background, int animateY){
         chart.getDescription().setText(descripcion);
         chart.getDescription().setTextColor(textColor);
-        chart.getDescription().setTextSize(20);
+        chart.getDescription().setTextSize(10);
         chart.setBackgroundColor(background);
         chart.animateY(animateY);
         legend(chart);
@@ -117,7 +120,7 @@ public class DashboardFragment extends Fragment {
     private void legend(Chart chart){
         Legend legend=chart.getLegend();
         legend.setForm(Legend.LegendForm.DEFAULT);
-        legend.setTextSize(15);
+        legend.setTextSize(10);
         legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
 
 
@@ -130,51 +133,64 @@ public class DashboardFragment extends Fragment {
         }
         legend.setCustom(entries);
     }
-    /* private ArrayList<BarEntry>getBarEntries(){
-         ArrayList<BarEntry> entries =new ArrayList<>();
-         for (int i=0; i< sale.length;i++)
-             entries.add(new BarEntry(i,sale[i]));
-         return entries;
-     }*/
+
     private ArrayList<PieEntry>getPieEntries(){
         ArrayList<PieEntry>entries=new ArrayList<>();
         for (int i=0; i<sale.length;i++)
             entries.add(new PieEntry(sale[i]));
         return entries;
     }
-    /*private void axisX(XAxis axis){
+
+    private ArrayList<Entry> getLineEntries() {
+        ArrayList<Entry> entries = new ArrayList<>();
+        for (int i = 0; i < sale.length; i++)
+            entries.add(new Entry(i, sale[i]));
+        return entries;
+    }
+    //Eje horizontal o eje X
+    private void axisX(XAxis axis){
         axis.setGranularityEnabled(true);
         axis.setPosition(XAxis.XAxisPosition.BOTTOM);
         axis.setValueFormatter(new IndexAxisValueFormatter(months));
-        // axis.setEnabled(false);
-    }*/
-    /*private void axisLeft(YAxis axis){
-        axis.setSpaceTop(20);
-        axis.setAxisMaximum(0);
-        //axis.setGranularity(3);
     }
+    //Eje Vertical o eje Y lado izquierdo
+    private void axisLeft(YAxis axis){
+        axis.setSpaceTop(30);
+        axis.setAxisMinimum(0);
+        axis.setGranularity(20);
+    }
+    //Eje Vertical o eje Y lado Derecho
     private void axisRight(YAxis axis){
         axis.setEnabled(false);
-    }*/
+    }
     private void createCharts(){
-        /*barChart=(BarChart)getSameChart(barChart, "Series",Color.RED,Color.CYAN,3000);
-        barChart.setDrawGridBackground(true);
-        barChart.setDrawBarShadow(true);
-        barChart.setData(getBarData());
-        barChart.invalidate();
-        axisX(barChart.getXAxis());
-        axisLeft(barChart.getAxisLeft());
-        axisRight(barChart.getAxisRight());
-        //barChart.getLegend().setEnabled(false);*/
+
 
         pieChart=(PieChart)getSameChart(pieChart,"COVID-19",Color.BLACK,Color.LTGRAY,3000);
-        pieChart.setHoleRadius(10);
-        pieChart.setTransparentCircleRadius(12);
+        pieChart.setHoleRadius(8);
+        pieChart.setTransparentCircleRadius(10);
         pieChart.setData(getPieData());
         pieChart.invalidate();
+        //pieChart.getLegend().setEnabled(false);
         //pieChart.setDrawHoleEnabled(false);
 
 
+        lineChart = (LineChart) getSameChart(lineChart, "COVID-19", Color.BLUE, Color.LTGRAY, 3000);
+        lineChart.setData(getLineData());
+        //lineChart.getLegend().setEnabled(false);
+        lineChart.invalidate();
+        axisX(lineChart.getXAxis());
+        axisLeft(lineChart.getAxisLeft());
+        axisRight(lineChart.getAxisRight());
+
+
+    }
+
+    private DataSet getDataSame(DataSet dataSet){
+        dataSet.setColors(colors);
+        dataSet.setValueTextColor(Color.WHITE);
+        dataSet.setValueTextSize(10);
+        return dataSet;
     }
     private DataSet getData(DataSet dataSet){
         dataSet.setColors(colors);
@@ -182,18 +198,25 @@ public class DashboardFragment extends Fragment {
         dataSet.setValueTextSize(10);
         return dataSet;
     }
-    /*private BarData getBarData(){
-        BarDataSet barDataSet=(BarDataSet)getData(new BarDataSet(getBarEntries(),""));
-        barDataSet.setBarShadowColor(Color.GRAY);
-        BarData barData = new BarData(barDataSet);
-        barData.setBarWidth(0.45f);
-        return barData;
-    }*/
+
     private PieData getPieData(){
         PieDataSet pieDataSet=(PieDataSet)getData(new PieDataSet(getPieEntries(),""));
         pieDataSet.setSliceSpace(2);
         pieDataSet.setValueFormatter(new PercentFormatter());
         return new PieData(pieDataSet);
 
+    }
+    private LineData getLineData() {
+        LineDataSet lineDataSet = (LineDataSet) getDataSame(new LineDataSet(getLineEntries(), ""));
+        lineDataSet.setLineWidth(2.5f);
+        //Color de los circulos de la grafica
+        lineDataSet.setCircleColors(colors);
+        //Tamaño de los circulos de la grafica
+        lineDataSet.setCircleRadius(5f);
+        //Sombra grafica
+        lineDataSet.setDrawFilled(true);
+        //Estilo de la linea picos(linear) o curveada(cubic) cuadrada(Stepped)
+        lineDataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+        return new LineData(lineDataSet);
     }
 }
