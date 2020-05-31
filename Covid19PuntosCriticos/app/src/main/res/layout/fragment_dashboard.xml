@@ -2,16 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Main.ui.dashboard.DashboardFragment">
 
-
     <LinearLayout
-
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="600dp">
+
         <TextView
             android:id="@+id/text_dashboard"
             android:layout_width="match_parent"
@@ -25,9 +25,11 @@
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/pieChart"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_weight="1" />
+
+
 
         <!--<com.github.mikephil.charting.charts.BarChart
         android:layout_width="match_parent"
@@ -36,4 +38,55 @@
         android:id="@+id/barChart"/>-->
 
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="25sp"
+        android:paddingLeft="25sp"
+        android:paddingRight="25sp"
+        android:paddingTop="25sp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:id="@+id/tvLabelTotalConfirmed"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            tools:text="162387"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="16dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:id="@+id/tvTotalDeaths"
+            android:textColor="#ff0000"
+            android:textSize="15sp"
+            tools:text="75648"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="#024A86"
+            android:textSize="15sp"
+            android:id="@+id/tvTotalRecovered"
+            tools:text="75938"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="16dp"/>
+
+
+    </LinearLayout>
+
 </RelativeLayout>

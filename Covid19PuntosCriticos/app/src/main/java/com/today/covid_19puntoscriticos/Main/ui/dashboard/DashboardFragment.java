@@ -47,9 +47,10 @@ import java.util.ArrayList;
 public class DashboardFragment extends Fragment {
     private PieChart pieChart;
     //private BarChart barChart;
+    private TextView tvTotalConfirmed, tvTotalDeaths, tvTotalRecovered, tvLasUpdated;
     private  String[]months=new String[]{"CONFIRMADOS","MUERTOS","RECUPERADOS",};
     private  int[]sale=new int[]{17,14,12};
-    private  int[]colors=new int[]{Color.BLACK,Color.RED,Color.GREEN,Color.BLUE,Color.MAGENTA};
+    private  int[]colors=new int[]{Color.BLACK,Color.RED,Color.BLUE};
     private DashboardViewModel dashboardViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -64,16 +65,19 @@ public class DashboardFragment extends Fragment {
                 textView.setText(s);
             }
         });
+        tvTotalConfirmed=root.findViewById(R.id.tvLabelTotalConfirmed);
+        tvTotalDeaths=root.findViewById(R.id.tvTotalDeaths);
+        tvTotalRecovered=root.findViewById(R.id.tvTotalRecovered);;
 
         //barChart=root.findViewById(R.id.barChart);
         pieChart=root.findViewById(R.id.pieChart);
 
         createCharts();
-        //getData();
+        getData();
         return root;
     }
 
-    /*private void getData() {
+    private void getData() {
         RequestQueue queue= Volley.newRequestQueue(getActivity());
 
         String url="https://corona.lmao.ninja/v2/all";
@@ -83,9 +87,10 @@ public class DashboardFragment extends Fragment {
 
                 try {
                     JSONObject jsonObject = new JSONObject(response.toString());
-                    jsonObject.getString("cases");
-                    jsonObject.getString("deaths");
-                    jsonObject.getString("recovered");
+                    tvTotalConfirmed.setText(jsonObject.getString("cases"));
+                    tvTotalDeaths.setText(jsonObject.getString("deaths"));
+                    tvTotalRecovered.setText(jsonObject.getString("recovered"));
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -98,11 +103,11 @@ public class DashboardFragment extends Fragment {
         });
 
         queue.add(stringRequest);
-    }*/
+    }
     private Chart getSameChart(Chart chart, String descripcion, int textColor, int background, int animateY){
         chart.getDescription().setText(descripcion);
         chart.getDescription().setTextColor(textColor);
-        chart.getDescription().setTextSize(15);
+        chart.getDescription().setTextSize(20);
         chart.setBackgroundColor(background);
         chart.animateY(animateY);
         legend(chart);
@@ -112,7 +117,7 @@ public class DashboardFragment extends Fragment {
     private void legend(Chart chart){
         Legend legend=chart.getLegend();
         legend.setForm(Legend.LegendForm.DEFAULT);
-
+        legend.setTextSize(15);
         legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
 
 
