@@ -8,13 +8,13 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    android:background="#ffff"
+    android:background="#000099"
     tools:context=".SplashScree">
 
     <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:src="@mipmap/ic_launcher"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:src="@mipmap/virus"
         android:id="@+id/ivSplash"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true">

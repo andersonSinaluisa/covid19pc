@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.38"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@mipmap/virus" />
     <LinearLayout
         android:gravity="center"
         android:orientation="vertical"
