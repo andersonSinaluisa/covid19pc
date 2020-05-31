@@ -1,6 +1,7 @@
 package com.today.covid_19puntoscriticos.Activities;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -20,21 +21,28 @@ import android.widget.Toast;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 import com.today.covid_19puntoscriticos.Config.Firebase;
 import com.today.covid_19puntoscriticos.LoginActivity;
 import com.today.covid_19puntoscriticos.Main.MainActivity;
 import com.today.covid_19puntoscriticos.Model.Preguntas;
+import com.today.covid_19puntoscriticos.Model.Usuario;
 import com.today.covid_19puntoscriticos.R;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 
+import static com.google.firebase.database.Transaction.*;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.id;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.poll;
 
@@ -78,12 +86,14 @@ public class Poll extends AppCompatActivity {
                 dialog.setTitle(getResources().getString(R.string.saving));
                 dialog.setCancelable(false);
                 dialog.show();
-
+                Date date = new Date();
+                SimpleDateFormat sfd = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
+                String fecha = sfd.format(date);
                 if(!m.isEmpty() || m.size()==total){
 
                     m.put("id", UUID.randomUUID().toString());
                     m.put("id_usuario",id(Poll.this));
-
+                    m.put("fecha",fecha);
                     final DatabaseReference poll = db.getmDatabase("Poll");
                     poll.child(m.get("id").toString()).setValue(m);
                     poll(Poll.this,true);
@@ -99,6 +109,8 @@ public class Poll extends AppCompatActivity {
 
 
     }
+
+
 
 
 

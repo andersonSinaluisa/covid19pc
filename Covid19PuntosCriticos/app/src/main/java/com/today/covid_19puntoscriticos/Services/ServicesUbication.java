@@ -177,6 +177,8 @@ public class ServicesUbication extends Service {
 
                     if(count>10){
                         validatorSymptoms=true;
+                    }else{
+                        validatorSymptoms=false;
                     }
 
                 }else{

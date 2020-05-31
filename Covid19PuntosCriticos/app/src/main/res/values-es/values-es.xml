@@ -57,6 +57,8 @@
 
 
     <string name="vacios">por favor responde las preguntas</string>
+
+    <string name="text_primary_diagnosis">Diagnostico de tus sintomas</string>
 </resources>
 
 

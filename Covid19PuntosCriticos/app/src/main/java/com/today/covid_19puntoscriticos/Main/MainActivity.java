@@ -54,6 +54,7 @@ import static com.today.covid_19puntoscriticos.Preferences.MainPreference.ageDat
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getAge;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getBasicInfo;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getDiseases;
+import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getGenr;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getPoll;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.id;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.userdata;
@@ -119,12 +120,15 @@ public class MainActivity extends AppCompatActivity {
         loadBasicInfo();
 
 
-        loadDialogRange();
+
 
 
 
 
     }
+
+
+
 
     private void loadDialogRange() {
         if(!validatorData){
@@ -195,6 +199,7 @@ public class MainActivity extends AppCompatActivity {
                                     ageData(MainActivity.this,edad);
 
                                     dialog.dismiss();
+                                    break;
                                 }
                             }
                         }
@@ -308,7 +313,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
+
         super.onStart();
+
+        if(getGenr(MainActivity.this).equals("") && getAge(MainActivity.this).equals("")){
+            loadDialogRange();
+        }
+
     }
 
     private void dataUser(String _UID, String _email, String _name, Uri _url, String _provider) {
@@ -336,10 +347,12 @@ public class MainActivity extends AppCompatActivity {
                            if(u.getUID().equals(UID)){
                                if(u.getGenr()==null){
                                    validatorData=false;
+                                   break;
                                }else {
                                    validatorData=true;
+                                   break;
                                }
-                               System.out.println(u.getUID()+"==>"+u.getEmail());
+
 
                            }else{
                                Usuario newUser = new Usuario();
@@ -350,6 +363,7 @@ public class MainActivity extends AppCompatActivity {
                                newUser.setProvider(provider);
                                referenceUsers.child(newUser.getUID()).setValue(newUser);
                                Toast.makeText(MainActivity.this, email, Toast.LENGTH_LONG).show();
+                               break;
 
                            }
 
@@ -411,7 +425,7 @@ public class MainActivity extends AppCompatActivity {
                         if(!getBasicInfo(MainActivity.this)){
                             startActivity(new Intent(MainActivity.this, BasicInfo.class));
                         }else {
-                            startActivity(new Intent(MainActivity.this, Diseases.class));
+                            startActivity(new Intent(MainActivity.this, Poll.class));
                         }
                     }
 

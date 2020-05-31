@@ -22,6 +22,8 @@ public class MainPreference {
 
 
 
+
+
     public static String email(Context c){
         SharedPreferences sharedPref= c.getSharedPreferences(c.getString(R.string.app_name), c.MODE_PRIVATE);
         return sharedPref.getString("email","");
@@ -43,11 +45,23 @@ public class MainPreference {
         edit.commit();
 
     }
+
+    public static void genrData(Context c, String genr){
+
+        SharedPreferences sharedPref= c.getSharedPreferences(c.getString(R.string.app_name), c.MODE_PRIVATE);
+        SharedPreferences.Editor edit =sharedPref.edit();
+        edit.putString("genr",genr);
+        edit.commit();
+
+    }
     public static String getAge(Context c){
         SharedPreferences sharedPref= c.getSharedPreferences(c.getString(R.string.app_name), c.MODE_PRIVATE);
         return sharedPref.getString("age","");
     }
-
+    public static String getGenr(Context c){
+        SharedPreferences sharedPref= c.getSharedPreferences(c.getString(R.string.app_name), c.MODE_PRIVATE);
+        return sharedPref.getString("genr","");
+    }
 
     public static void diseases(Context c, boolean diseases){
 
@@ -75,6 +89,8 @@ public class MainPreference {
         edit.commit();
 
     }
+
+
 
 
 
