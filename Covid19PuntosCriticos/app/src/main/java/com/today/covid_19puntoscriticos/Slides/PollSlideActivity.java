@@ -13,9 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
+//import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.today.covid_19puntoscriticos.Activities.Poll;
 import com.today.covid_19puntoscriticos.R;
 
@@ -121,8 +119,8 @@ public class PollSlideActivity extends AppCompatActivity {
             }
         });
 
-        GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(mContentView);
-        Glide.with(this).load(R.raw.poll).into(imageViewTarget);
+        /*GlideDrawableImageView imageViewTarget = new GlideDrawableImageViewTarget(mContentView);
+        Glide.with(this).load(R.raw.poll).into(imageViewTarget);*/
 
 
 

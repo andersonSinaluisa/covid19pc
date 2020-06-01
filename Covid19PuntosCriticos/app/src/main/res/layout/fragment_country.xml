@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    tools:context="Main.ui.country.CountryFragment">
+    android:background="@color/black_overlay"
+    tools:context=".Main.ui.country.CountryFragment">
 
 
     <LinearLayout
         android:id="@+id/linearLayoutTotalCountires"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/black_overlay"
         android:gravity="center">
 
         <TextView

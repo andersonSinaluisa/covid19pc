@@ -3,17 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    tools:context="Main.ui.country.CovidCountryDatail">
+    android:background="@color/black_overlay"
+    tools:context=".Main.ui.country.CovidCountryDatail">
 
     <LinearLayout
+        android:layout_margin="16dp"
         android:id="@+id/linearLayoutCountryName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true">
 
         <TextView
-
+            android:textAlignment="center"
             style="@style/TotalFontStyle"
             android:textColor="#fff"
             android:id="@+id/tvDetailCountryName"
@@ -109,7 +110,7 @@
             <TextView
                 android:id="@+id/tvDetailTotalDeaths"
                 tools:text="3245"
-                android:textColor="@color/colorTotalDeaths"
+                android:textColor="#000000"
                 style="@style/TotalFontStyle"
                 android:layout_marginTop="-10dp"
                 android:layout_centerHorizontal="true"
@@ -136,7 +137,7 @@
             <TextView
                 android:id="@+id/tvDetailTodayDeaths"
                 tools:text="4"
-                android:textColor="@color/colorTotalDeaths"
+                android:textColor="#000000"
                 style="@style/TotalFontStyle"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="-10dp"
