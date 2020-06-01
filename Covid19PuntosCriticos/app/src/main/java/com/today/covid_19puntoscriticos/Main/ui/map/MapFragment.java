@@ -185,7 +185,7 @@ public class MapFragment extends Fragment  implements GoogleMap.OnCameraIdleList
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
-
+                    list.clear();
                     for(DataSnapshot obj : dataSnapshot.getChildren()){
                         HistorialPosition h = obj.getValue(HistorialPosition.class);
 

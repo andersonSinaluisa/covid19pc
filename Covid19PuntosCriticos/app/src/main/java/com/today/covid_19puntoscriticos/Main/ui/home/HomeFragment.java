@@ -72,6 +72,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
+                    list.clear();
                     for(DataSnapshot obj : dataSnapshot.getChildren()){
                         Pages p = obj.getValue(Pages.class);
 
