@@ -32,6 +32,7 @@ import com.today.covid_19puntoscriticos.Activities.BasicInfo;
 import com.today.covid_19puntoscriticos.Activities.Diseases;
 import com.today.covid_19puntoscriticos.Activities.MyDiagnosis;
 import com.today.covid_19puntoscriticos.Activities.Poll;
+import com.today.covid_19puntoscriticos.Activities.Service;
 import com.today.covid_19puntoscriticos.Adapters.SpinnerAdapter;
 import com.today.covid_19puntoscriticos.Config.Firebase;
 import com.today.covid_19puntoscriticos.Model.Range;
@@ -51,6 +52,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.ageData;
+import static com.today.covid_19puntoscriticos.Preferences.MainPreference.genrData;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getAge;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getBasicInfo;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getDiseases;
@@ -93,8 +95,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        if(id(MainActivity.this).isEmpty() || id(MainActivity.this).equals("")){
+            dataUser(currentUser.getUid(),currentUser.getEmail(),currentUser.getDisplayName(),currentUser.getPhotoUrl(),currentUser.getProviderId());
 
-        dataUser(currentUser.getUid(),currentUser.getEmail(),currentUser.getDisplayName(),currentUser.getPhotoUrl(),currentUser.getProviderId());
+        }
+
 
 
 
@@ -194,12 +199,18 @@ public class MainActivity extends AppCompatActivity {
                                 for(DataSnapshot obj : dataSnapshot.getChildren()){
                                     Usuario u = obj.getValue(Usuario.class);
                                     //si el usuario existe
-                                    referenceUsers.child(id(MainActivity.this)).child("age").setValue(edad);
-                                    referenceUsers.child(id(MainActivity.this)).child("genr").setValue(genr);
-                                    ageData(MainActivity.this,edad);
+                                    assert u != null;
+                                    if(u.getUID().equals(id(MainActivity.this))){
+                                        System.out.println("contar");
+                                        referenceUsers.child(id(MainActivity.this)).child("age").setValue(edad);
+                                        referenceUsers.child(id(MainActivity.this)).child("genr").setValue(genr);
+                                        ageData(MainActivity.this,edad);
+                                        genrData(MainActivity.this,genr);
+                                        dialog.dismiss();
+                                        break;
 
-                                    dialog.dismiss();
-                                    break;
+                                    }
+
                                 }
                             }
                         }
@@ -316,9 +327,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onStart();
 
-        if(getGenr(MainActivity.this).equals("") && getAge(MainActivity.this).equals("")){
-            loadDialogRange();
-        }
+
 
     }
 
@@ -362,7 +371,7 @@ public class MainActivity extends AppCompatActivity {
                                newUser.setPhoto_url(photo_url);
                                newUser.setProvider(provider);
                                referenceUsers.child(newUser.getUID()).setValue(newUser);
-                               Toast.makeText(MainActivity.this, email, Toast.LENGTH_LONG).show();
+                            //   Toast.makeText(MainActivity.this, email, Toast.LENGTH_LONG).show();
                                break;
 
                            }
@@ -434,7 +443,7 @@ public class MainActivity extends AppCompatActivity {
 
                 return true;
             case R.id.aboutUs:
-                startActivity(new Intent(MainActivity.this, AboutUs.class));
+                startActivity(new Intent(MainActivity.this, Service.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

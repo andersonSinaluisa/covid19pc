@@ -34,6 +34,7 @@ public class Service extends AppCompatActivity {
            @Override
            public void onResponse(Call<Earth> call, Response<Earth> response) {
                Earth earth = response.body();
+               System.out.println(earth.getUrl());
            }
 
            @Override

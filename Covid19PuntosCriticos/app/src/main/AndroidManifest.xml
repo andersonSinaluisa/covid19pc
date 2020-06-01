@@ -35,6 +35,12 @@
             android:label="@string/app_name"
             android:noHistory="true" />
         <activity
+            android:noHistory="true"
+            android:name=".Slides.PollSlideActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_poll_slide"
+            android:theme="@style/FullscreenTheme" />
+        <activity
             android:name=".SplashScree"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>

@@ -17,6 +17,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.today.covid_19puntoscriticos.Main.MainActivity;
+import com.today.covid_19puntoscriticos.Slides.PollSlideActivity;
+
+import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getPoll;
+import static com.today.covid_19puntoscriticos.Preferences.MainPreference.poll;
 
 public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener authStateListener;
@@ -100,9 +104,15 @@ public class LoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser currentUser = firebaseAuth.getCurrentUser();
                 if (currentUser != null) {
-                    Toast.makeText(LoginActivity.this, "Bienvenido", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(i);
+                    if(getPoll(LoginActivity.this)){
+                        // Toast.makeText(LoginActivity.this, "Bienvenido", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(i);
+                    }else{
+                        Intent i = new Intent(LoginActivity.this, PollSlideActivity.class);
+                        startActivity(i);
+                    }
+
                 }
             }
         };

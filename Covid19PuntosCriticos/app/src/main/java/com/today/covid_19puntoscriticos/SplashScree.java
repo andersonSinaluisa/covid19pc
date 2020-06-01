@@ -12,6 +12,8 @@ import android.view.WindowManager;
 
 import com.today.covid_19puntoscriticos.Main.MainActivity;
 
+import static com.today.covid_19puntoscriticos.Preferences.MainPreference.id;
+
 public class SplashScree extends AppCompatActivity {
     private  final  int DURACION_SPLASH=4000;
 
@@ -24,8 +26,10 @@ public class SplashScree extends AppCompatActivity {
 
         new Handler().postDelayed(new Runnable() {
             public void run() {
-                Intent intent = new Intent(SplashScree.this, LoginActivity.class);
-                startActivity(intent);
+
+                    Intent intent = new Intent(SplashScree.this, LoginActivity.class);
+                    startActivity(intent);
+
                 finish();
             };
         }, DURACION_SPLASH);

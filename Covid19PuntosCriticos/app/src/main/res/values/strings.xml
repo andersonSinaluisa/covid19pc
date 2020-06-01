@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Covid-19 PuntosCriticos</string>
+    <string name="app_name">Virus Search</string>
     <string name="information_login">INFORMACION Y BREVE RESUMEN DE LA APP</string>
     <string name="api_key_nasa">an1IMjVwogVGhmgvr7f0BgEu6u2g3YRW5J2qisFf</string>
     <string name="title_activity_main">MainActivity</string>
@@ -11,6 +11,10 @@
     <string name="Poll">Poll</string>
     <string name="Info">Info</string>
 
+
+    <!-- Login -->
+    <string name="password">Password</string>
+    <string name="email">Email</string>
     <!-- Activity Login -->
     <string name="btn_login">Log in</string>
     <string name="btn_registro">Sign up</string>
@@ -39,8 +43,10 @@
 
     <!-- MENU -->
     <string name="account">account</string>
+    <string name="text_home">find relevant information by clicking on the cards</string>
 
-
+    <string name="diagnosis">Your Symptoms</string>
+    <string name="meses">Days</string>
     <!-- POLL-->
     <string name="diseases">indicate if you have any of these diseases</string>
     <string name="symptoms">have you felt any of these symptoms today?</string>
@@ -49,15 +55,80 @@
 
 
     <!--DASHBOARD-->
-    <string name="textMainDashboard">COVID-19 Global Statisticsl</string>
-
+    <string name="textMainDashboard">COVID-19 Global Statistics</string>
+    <string name="confirmed">confirmed</string>
+    <string name="recovered">recovered</string>
+    <string name="deceased">deceased</string>
     <!-- Mensaje -->
     <string name="saving">Saving</string>
     <string name="edad">Range range</string>
     <string name="genr">Gender</string>
 
 
+
     <string name="vacios">please answer the questions</string>
-    <string name="text_primary_diagnosis">Diagnosis of your symptoms</string>
+    <string name="text_primary_diagnosis">Diagnosis of your symptoms during this month</string>
+
+
+    <string name="positives_symptomas">
+        If you have mild symptoms, such as a mild cough or fever, you generally do not need to seek medical attention.\n
+        Stay home, isolate yourself, and watch your symptoms. Follow national guidelines on self-isolation. \n
+        However, if you live in an area with malaria or dengue, it is important that you do not ignore fever.\n
+        Seek medical help. When you go to the health center wear a mask if possible, stay at least one meter away
+        from other people and do not touch the surfaces with your hands. In case the sick person is a child, help him to follow this advice.
+
+        \n Se medical attention immediately if you have trouble breathing or feel chest pain or pressure.
+        \n If possible, call your health care provider in advance so they can direct you to the right health center.
+
+
+    </string>
+
+    <string name="negative_symptoms">
+        Practicing respiratory and hand hygiene is important at ALL times and the best way to protect yourself and others. \n
+
+      Whenever possible, keep at least a meter of distance between you and others.
+        \n This is especially important if you are next to someone who is coughing or sneezing.
+        \n Because some infected people may not yet have symptoms or their symptoms may be mild,
+        \n you should keep a physical distance from everyone if you are in an area where the COVID-19 virus is circulating.
+    </string>
+    <string name="recomendation">
+        The confirmed symptoms of covid 19 have been 14, but you can be asymptomatic,
+        remember to wear a mask and wash your hands frequently
+    </string>
+
+
+
+
+    <!-- About -->
+    <string name="info_app">
+        VirusSearch is an App that promises to provide updated information on the areas of greatest
+         \n infection of a specific virus, in the first stay this application will focus on the Covid-19
+         \n Due to the current situation, the application is easy to understand and interactive,
+         \n The key points to highlight are: the identification of danger sectors through a heat map according to
+         \n level of risk, official statistical information worldwide, also the development of digital self-management
+         \n through a form made by users to identify if they are carrying the virus, they can also go
+         \n updating your health status.
+    </string>
+    <string name="st_about_as">
+        About
+    </string>
+    <string name="info_integrantes">
+        Integrantes:
+        -Carla Nereida Utterman Muñoz
+        - Galo Andres Manzo Villareal
+        - Drubber Elian Sanchez Macias
+        - Manuel Adrian Carpo Moran
+        -Anderson Javier Sinualisa Tobar
+        -Kelly Daniela Mercado Reyes
+    </string>
+
+
+    <!-- Slide Poll -->
+    <string name="title_activity_poll_slide">Slide</string>
+    <string name="text_slide_poll">
+        We need your help to give information on the areas affected by covid-19,
+         please fill out the following survey
+    </string>
+    <string name="next">Next  </string>
 
 </resources>

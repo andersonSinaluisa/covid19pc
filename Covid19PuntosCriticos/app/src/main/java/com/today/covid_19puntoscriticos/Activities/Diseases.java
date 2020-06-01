@@ -65,7 +65,7 @@ public class Diseases extends AppCompatActivity {
                 dialog.show();
                 if(m.size()==total){
 
-                    m.put("id", UUID.randomUUID().toString());
+                    m.put("id", id(Diseases.this));
                     m.put("id_usuario",id(Diseases.this));
                     final DatabaseReference poll = db.getmDatabase("Diseases");
                     poll.child(m.get("id").toString()).setValue(m);

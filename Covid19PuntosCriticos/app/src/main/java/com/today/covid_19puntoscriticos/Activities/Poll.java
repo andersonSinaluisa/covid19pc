@@ -18,6 +18,8 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -61,7 +63,7 @@ public class Poll extends AppCompatActivity {
     HashMap<String,Object> m = new HashMap<String, Object>();
 
     private int total;
-
+    private FirebaseUser currentUser = null;
 
     private ProgressDialog dialog ;
     @Override
@@ -76,6 +78,8 @@ public class Poll extends AppCompatActivity {
         dialog= new ProgressDialog(Poll.this);
 
 
+
+
         //preguntas de los sintomas
         loadSymptoms();
 
@@ -83,17 +87,29 @@ public class Poll extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 dialog.setTitle(getResources().getString(R.string.saving));
                 dialog.setCancelable(false);
                 dialog.show();
                 Date date = new Date();
                 SimpleDateFormat sfd = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
                 String fecha = sfd.format(date);
+                final String month = fecha.substring(3,5);
                 if(!m.isEmpty() || m.size()==total){
 
                     m.put("id", UUID.randomUUID().toString());
-                    m.put("id_usuario",id(Poll.this));
+                    if(id(Poll.this).equals("") || id(Poll.this)==null){
+                        currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+                            assert currentUser != null;
+                            m.put("id_usuario",currentUser.getUid());
+
+                    }else{
+                        m.put("id_usuario",id(Poll.this));
+                    }
+
                     m.put("fecha",fecha);
+                    m.put("mes",month);
                     final DatabaseReference poll = db.getmDatabase("Poll");
                     poll.child(m.get("id").toString()).setValue(m);
                     poll(Poll.this,true);
@@ -178,7 +194,7 @@ public class Poll extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                m.put(p.getId().toString(),true);
+                m.put(p.getId().toString(),1);
 
                 }
             });
@@ -187,35 +203,13 @@ public class Poll extends AppCompatActivity {
             radioRight.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    m.put(p.getId().toString(),false);
+                    m.put(p.getId().toString(),0);
                 }
             });
 
 
             layout.addView(questionLayout);
         }
-
-
-
-        if(p.getTipo().equals("input")){
-            final LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            final LinearLayout questionLayout = (LinearLayout) inflater.inflate(R.layout.item_input, null);
-            TextView t = (TextView) questionLayout.findViewById(R.id.basicQuestionInput);
-            t.setText(p.getDescripcion());
-            EditText e = (EditText) questionLayout.findViewById(R.id.respuesta);
-
-
-
-
-            layout.addView(questionLayout);
-            m.put(p.getId().toString(),e.getText());
-        }
-
-
-
-
-
-
 
 
     }

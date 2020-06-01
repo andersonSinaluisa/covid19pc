@@ -14,7 +14,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.today.covid_19puntoscriticos.Activities.Poll;
 import com.today.covid_19puntoscriticos.Main.MainActivity;
+import com.today.covid_19puntoscriticos.Slides.PollSlideActivity;
 
 public class RegistroActivity extends AppCompatActivity {
 
@@ -63,7 +65,7 @@ public class RegistroActivity extends AppCompatActivity {
                                         System.out.println(task.getException()+"");
                                         Toast.makeText(RegistroActivity.this, "No pudimos registrarte, intentalo de nuevo más tarde", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        startActivity(new Intent(RegistroActivity.this, MainActivity.class));
+                                        startActivity(new Intent(RegistroActivity.this, PollSlideActivity.class));
                                     }
                                 }
                             }

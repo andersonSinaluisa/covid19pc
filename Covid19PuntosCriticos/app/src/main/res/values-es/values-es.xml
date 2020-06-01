@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources> <string name="app_name">Covid-19 PuntosCriticos</string>
+<resources> <string name="app_name">Virus Search</string>
     <string name="information_login">INFORMACION Y BREVE RESUMEN DE LA APP</string>
     <string name="api_key_nasa">an1IMjVwogVGhmgvr7f0BgEu6u2g3YRW5J2qisFf</string>
     <string name="title_activity_main">MainActivity</string>
@@ -11,6 +11,11 @@
     <string name="Poll">Encuesta</string>
     <string name="Info">Info</string>
 
+
+    <string name="text_home">encuentra información relevante dando click en las tarjetas</string>
+
+    <string name="diagnosis">Tus Sintomas</string>
+    <string name="meses">Dias</string>
     <!-- Activity Login -->
     <string name="btn_login">Iniciar session</string>
     <string name="btn_registro">registrarse</string>
@@ -36,6 +41,9 @@
     <string name="yes">Si</string>
     <string name="No">No</string>
 
+
+    <string name="password">Contraseña</string>
+    <string name="email">Correo</string>
     <!-- MENU -->
     <string name="account">cuenta</string>
 
@@ -47,7 +55,9 @@
     <string name="save_poll">Guardar</string>
     <!--DASHBOARD-->
     <string name="textMainDashboard">COVID-19 Estadistica Global</string>
-
+    <string name="confirmed">Confirmados</string>
+    <string name="recovered">Recuperados</string>
+    <string name="deceased">Fallecidos</string>
     <!-- Mensaje -->
     <string name="saving">Guardando</string>
 
@@ -58,7 +68,70 @@
 
     <string name="vacios">por favor responde las preguntas</string>
 
-    <string name="text_primary_diagnosis">Diagnostico de tus sintomas</string>
+    <string name="text_primary_diagnosis">Diagnostico de tus sintomas durante este mes</string>
+
+
+
+
+
+
+
+    <string name="positives_symptomas">
+        Si tiene síntomas leves, como tos o fiebre leves, generalmente no es necesario que busque atención médica.
+        \n Quédese en casa, aíslese y vigile sus síntomas. Siga las orientaciones nacionales sobre el autoaislamiento.
+        \n Sin embargo, si vive en una zona con paludismo (malaria) o dengue, es importante que no ignore la fiebre.
+        \n Busque ayuda médica. Cuando acuda al centro de salud lleve mascarilla si es posible,
+        \n manténgase al menos a un metro de distancia de las demás personas y no toque las superficies con las manos.
+        \n En caso de que el enfermo sea un niño, ayúdelo a seguir este consejo.
+
+        \n Busque inmediatamente atención médica si tiene dificultad para respirar o siente dolor o presión en el pecho.
+        \n Si es posible, llame a su dispensador de atención de la salud con antelación para que pueda dirigirlo hacia el centro de salud adecuado.
+    </string>
+    <string name="negative_symptoms">
+
+        Practica la higiene respiratoria y de las manos esto es importante en TODO momento y la mejor forma de protegerse a sí mismo y a los demás.
+        \n
+        \n Cuando sea posible, mantenga al menos un metro de distancia entre usted y los demás.
+        \n Esto es especialmente importante si está al lado de alguien que esté tosiendo o estornudando.
+        \n Dado que es posible que algunas personas infectadas aún no presenten síntomas o que sus síntomas sean leves,
+        \n conviene que mantenga una distancia física con todas las personas si se encuentra en una zona donde circule el virus de la COVID‑19.
+    </string>
+
+    <string name="recomendation">
+        Los sintomas confirmados del covid 19 han sido 14, pero puedes ser asintomatico,
+        recuerda usar mascarilla y lavartelas manos frecuentemente
+    </string>
+
+
+    <string name="info_app">
+        VirusSearch es una App que promete brindar información actualizada sobre las zonas de mayor
+        \n infección de un virus especifico, en primera estancia este aplicativo se centrará en el Covid-19
+        \n por la coyuntura por la que se está atravesando, el aplicativo es de fácil comprensión e interactivo,
+        \n los puntos claves a destacar son: la identificación de sectores de peligro a través de un mapa de calor según
+        \n nivel de riesgo, información estadística oficial a nivel mundial, también el desarrollo de un autotriaje digital
+        \n a través de un formulario realizado por los usuarios para identificar si son portan el virus además estos pueden ir
+        \n actualizando su estado de salud.
+    </string>
+    <string name="st_about_as">
+
+        Acerca de la app
+    </string>
+
+    <string name="info_integrantes">
+        Integrantes:
+       \n -Carla Nereida Utterman Muñoz
+        \n - Galo Andres Manzo Villareal
+        \n - Drubber Elian Sanchez Macias
+        \n - Manuel Adrian Carpo Moran
+        \n -Anderson Javier Sinualisa Tobar
+        \n -Kelly Daniela Mercado Reyes
+    </string>
+    <!-- Slide Poll -->
+    <string name="title_activity_poll_slide">Slide</string>
+    <string name="text_slide_poll">
+        Necesitamos de tu ayuda para dar informacion de las zonas afectadas por el covid-19,por favor llena la siguiente encuesta
+    </string>
+    <string name="next">Siguiente  </string>
 </resources>
 
 
