@@ -15,6 +15,7 @@
         <TextView
             android:background="@color/colorAccent"
             android:id="@+id/text_dashboard"
+            android:fontFamily="@font/poppins_bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
@@ -64,6 +65,7 @@
             android:id="@+id/tvLabelTotalConfirmed"
             android:textColor="#000000"
             android:textSize="10sp"
+            android:fontFamily="@font/poppins_bold"
             tools:text="162387"
             android:paddingBottom="16dp"
             android:paddingLeft="16dp"
@@ -73,6 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:fontFamily="@font/poppins_bold"
             android:id="@+id/tvTotalDeaths"
             android:textColor="#ff0000"
             android:textSize="10sp"
@@ -86,6 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:fontFamily="@font/poppins_bold"
             android:textColor="#024A86"
             android:textSize="10sp"
             android:id="@+id/tvTotalRecovered"

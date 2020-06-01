@@ -15,7 +15,7 @@
             <TextView
                 android:textColor="@color/colorAccent"
                 android:layout_margin="5dp"
-                android:fontFamily="sans-serif-black"
+                android:fontFamily="@font/poppins_bold"
                 android:text="@string/diseases"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -32,6 +32,7 @@
             <Button
 
                 android:text="@string/save_poll"
+                android:fontFamily="@font/poppins_bold"
                 android:id="@+id/btn_save_diseases"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
