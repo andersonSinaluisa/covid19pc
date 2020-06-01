@@ -443,7 +443,7 @@ public class MainActivity extends AppCompatActivity {
 
                 return true;
             case R.id.aboutUs:
-                startActivity(new Intent(MainActivity.this, Service.class));
+                startActivity(new Intent(MainActivity.this, AboutUs.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

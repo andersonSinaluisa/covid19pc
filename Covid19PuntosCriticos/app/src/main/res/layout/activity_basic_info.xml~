@@ -32,7 +32,6 @@
             </LinearLayout>
 
             <Button
-                android:background="@color/colorAccent"
                 android:text="@string/save_poll"
                 android:id="@+id/btn_save_basicinfo"
                 android:fontFamily="@font/poppins_bold"
