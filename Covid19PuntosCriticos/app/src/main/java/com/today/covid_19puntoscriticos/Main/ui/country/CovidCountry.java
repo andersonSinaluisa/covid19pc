@@ -7,6 +7,8 @@ public class CovidCountry implements Parcelable {
 
     String mCovidCountry, mCases, mTodayCases, mDeaths, mTodayDeaths, mRecovered, mActive, mCritical;
 
+    public CovidCountry(){}
+
     public CovidCountry(String mCovidCountry, String mCases, String mTodayCases, String mDeaths, String mTodayDeaths, String mRecovered, String mActive, String mCritical) {
         this.mCovidCountry = mCovidCountry;
         this.mCases = mCases;

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -33,6 +34,7 @@ public class CountryFragment extends Fragment {
 
 RecyclerView rvCovidCountry;
 ProgressBar progressBar;
+TextView tvTotalCountry;
 
 private static final String TAG = CountryFragment.class.getSimpleName();
 
@@ -46,6 +48,7 @@ ArrayList<CovidCountry> covidCountries;
         // call view
         rvCovidCountry = root.findViewById(R.id.rvCovidCountry);
         progressBar= root.findViewById(R.id.progress_circular_country);
+        tvTotalCountry = root.findViewById(R.id.tvTotalCountries);
         rvCovidCountry.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         DividerItemDecoration dividerItemDecoration= new DividerItemDecoration(rvCovidCountry.getContext(), DividerItemDecoration.VERTICAL );
@@ -101,6 +104,7 @@ ArrayList<CovidCountry> covidCountries;
                                     data.getString("recovered"), data.getString("active"), data.getString("critical")
                                     ));
                         }
+                        tvTotalCountry.setText(jsonArray.length()+" countries");
                         showRecyclerView();
                     } catch (JSONException e) {
                         e.printStackTrace();

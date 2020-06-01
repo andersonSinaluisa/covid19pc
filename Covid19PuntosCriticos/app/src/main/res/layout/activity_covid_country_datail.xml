@@ -49,6 +49,7 @@
                 tools:text="80282"
                 android:textColor="@color/colorTotalConfirmed"
                 style="@style/TotalFontStyle"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="-10dp"
                 android:textSize="26sp"
                 android:layout_width="wrap_content"
@@ -73,6 +74,7 @@
             <TextView
                 android:id="@+id/tvDetailTodayCases"
                 tools:text="45"
+                android:layout_centerHorizontal="true"
                 android:textColor="@color/colorTotalConfirmed"
                 style="@style/TotalFontStyle"
                 android:layout_marginTop="-10dp"
@@ -110,6 +112,7 @@
                 android:textColor="@color/colorTotalDeaths"
                 style="@style/TotalFontStyle"
                 android:layout_marginTop="-10dp"
+                android:layout_centerHorizontal="true"
                 android:textSize="26sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -135,6 +138,7 @@
                 tools:text="4"
                 android:textColor="@color/colorTotalDeaths"
                 style="@style/TotalFontStyle"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="-10dp"
                 android:textSize="26sp"
                 android:layout_width="wrap_content"
@@ -170,6 +174,7 @@
                 tools:text="80282"
                 android:textColor="@color/colorTotalRecovered"
                 style="@style/TotalFontStyle"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="-10dp"
                 android:textSize="26sp"
                 android:layout_width="wrap_content"
@@ -204,6 +209,7 @@
                 tools:text="3245"
                 android:textColor="@color/colorTotalConfirmed"
                 style="@style/TotalFontStyle"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="-10dp"
                 android:textSize="26sp"
                 android:layout_width="wrap_content"
@@ -232,6 +238,7 @@
                 style="@style/TotalFontStyle"
                 android:layout_marginTop="-10dp"
                 android:textSize="26sp"
+                android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>

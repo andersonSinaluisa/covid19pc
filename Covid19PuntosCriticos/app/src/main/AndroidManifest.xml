@@ -22,6 +22,7 @@
         <activity android:name=".Activities.Service"></activity>
         <activity android:name=".Activities.BasicInfo" />
         <activity android:name=".Activities.Diseases" />
+        <activity android:name=".Main.ui.country.CovidCountryDatail" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
