@@ -58,6 +58,7 @@ public class MyDiagnosis extends AppCompatActivity {
     private int anio;
     private int dia;
 
+    private int div;
 
     private int evaluate;
     private ArrayList<BarEntry> lineEntries = new ArrayList<BarEntry>();
@@ -138,6 +139,8 @@ public class MyDiagnosis extends AppCompatActivity {
                             System.out.println(obj.getKey()+"==>" +obj.getValue());
                             //valores dentro del nodo
                             HashMap<String,Object> o = (HashMap<String,Object>) obj.getValue();
+                            div = o.size();
+
                             for (Map.Entry<String, Object> entry : o.entrySet()){
                                 System.out.println(entry.getKey()+"==>"+entry.getValue());
                                 if(!entry.getKey().equals("id") || !entry.getKey().equals("id_usuario") || !entry.getKey().equals("fecha")){
@@ -171,14 +174,15 @@ public class MyDiagnosis extends AppCompatActivity {
 
                             }
                             System.out.println(count+"TOTAL DE SINTOMAS");
-                            if((count/o.size())>7 && (count/o.size())==o.size()){
 
-                                evaluate=1;
-                            }else{
-                                evaluate=0;
-                            }
                         }
 
+                    }
+                    if((count/div)>7 && (count/div)==div){
+
+                        evaluate=1;
+                    }else{
+                        evaluate=0;
                     }
                     lineDataSet = new BarDataSet(lineEntries, getResources().getString(R.string.diagnosis));
                     Description d = new Description();

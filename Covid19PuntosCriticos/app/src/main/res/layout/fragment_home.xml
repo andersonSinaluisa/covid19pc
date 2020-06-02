@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Main.ui.home.HomeFragment">
-    <TextView
-        android:background="@color/colorAccent"
-        android:id="@+id/text_home_information"
-        android:text="@string/text_home"
-        android:gravity="center"
-        android:textColor="@color/colorWhite"
+
+    <LinearLayout
+
         android:layout_width="match_parent"
-        android:layout_height="25dp"
-        />
+        android:layout_height="wrap_content">
+        <TextView
+            android:background="@color/colorAccent"
+            android:id="@+id/text_home_information"
+            android:text="@string/text_home"
+            android:gravity="center"
+            android:textColor="@color/colorWhite"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            />
+
+    </LinearLayout>
+
     <GridView
     android:layout_marginBottom="30dp"
     android:horizontalSpacing="5dp"
@@ -24,4 +33,4 @@
     android:layout_height="match_parent">
 
 </GridView>
-</RelativeLayout>
+</LinearLayout>

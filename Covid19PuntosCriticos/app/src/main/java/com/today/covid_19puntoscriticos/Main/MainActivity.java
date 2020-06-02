@@ -38,6 +38,7 @@ import com.today.covid_19puntoscriticos.Config.Firebase;
 import com.today.covid_19puntoscriticos.Model.Range;
 import com.today.covid_19puntoscriticos.Model.Usuario;
 import com.today.covid_19puntoscriticos.R;
+import com.today.covid_19puntoscriticos.Slides.PollSlideActivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -59,6 +60,7 @@ import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getDis
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getGenr;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getPoll;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.id;
+import static com.today.covid_19puntoscriticos.Preferences.MainPreference.poll;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.userdata;
 
 public class MainActivity extends AppCompatActivity {
@@ -434,7 +436,12 @@ public class MainActivity extends AppCompatActivity {
                         if(!getBasicInfo(MainActivity.this)){
                             startActivity(new Intent(MainActivity.this, BasicInfo.class));
                         }else {
-                            startActivity(new Intent(MainActivity.this, Poll.class));
+                            if(!getPoll(MainActivity.this)){
+                                startActivity(new Intent(MainActivity.this, PollSlideActivity.class));
+
+                            }else{
+                                startActivity(new Intent(MainActivity.this, Poll.class));
+                            }
                         }
                     }
 
@@ -443,7 +450,7 @@ public class MainActivity extends AppCompatActivity {
 
                 return true;
             case R.id.aboutUs:
-                startActivity(new Intent(MainActivity.this, AboutUs.class));
+                startActivity(new Intent(MainActivity.this, Service.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.today.covid_19puntoscriticos.R;
 
 import java.util.ArrayList;
@@ -44,7 +43,6 @@ public class CovidCountryAdapter extends RecyclerView.Adapter<CovidCountryAdapte
 
         Glide.with(context)
                 .load(covidCountry.getmFlags())
-                .apply(new RequestOptions().override(240,160))
                 .into(holder.imgCountryFlag);
     }
 

@@ -52,7 +52,7 @@ ArrayList<CovidCountry> covidCountries;
         rvCovidCountry.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         DividerItemDecoration dividerItemDecoration= new DividerItemDecoration(rvCovidCountry.getContext(), DividerItemDecoration.VERTICAL );
-        dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getContext(),R.drawable.line_divider));
+        dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getContext(), R.drawable.line_divider));
         rvCovidCountry.addItemDecoration(dividerItemDecoration);
 
         // call volley method

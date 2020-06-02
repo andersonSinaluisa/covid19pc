@@ -11,8 +11,10 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.today.covid_19puntoscriticos.Main.Earth;
 import com.today.covid_19puntoscriticos.Main.WeatherService;
 import com.today.covid_19puntoscriticos.R;
@@ -32,11 +34,17 @@ public class Service extends AppCompatActivity {
     private int permissionchecked;
     private double longitud = 0;
     private double latitud = 0;
+
+    private ImageView img;
+
+    private  String EDteamImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service);
+        img = (ImageView) findViewById(R.id.img_nasa);
 
+        Glide.with(Service.this).load(EDteamImage).into(img);
 
         loadLocation();
 
@@ -57,7 +65,7 @@ public class Service extends AppCompatActivity {
                 public void onResponse(Call<Earth> call, Response<Earth> response) {
                     Earth earth = response.body();
                     if (call.isExecuted()) {
-
+                        EDteamImage = earth.getUrl();
                         System.out.println(earth);
                         // Toast.makeText(Service.this, earth.getUrl(), Toast.LENGTH_SHORT).show();
                     }

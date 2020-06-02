@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 //import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.today.covid_19puntoscriticos.Activities.Poll;
 import com.today.covid_19puntoscriticos.R;
 
@@ -119,8 +121,11 @@ public class PollSlideActivity extends AppCompatActivity {
             }
         });
 
-        /*GlideDrawableImageView imageViewTarget = new GlideDrawableImageViewTarget(mContentView);
-        Glide.with(this).load(R.raw.poll).into(imageViewTarget);*/
+
+
+        GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(mContentView);
+        Glide.with(this).load(R.raw.poll).into(imageViewTarget);
+
 
 
 
@@ -155,6 +160,18 @@ public class PollSlideActivity extends AppCompatActivity {
 
 
     }
+
+
+    private boolean isGif(String imagen) {
+        String extension = "";
+        int i = imagen.lastIndexOf('.');
+        int p = Math.max(imagen.lastIndexOf('/'), imagen.lastIndexOf('\\'));
+        if (i > p) {
+            extension = imagen.substring(i+1);
+        }
+        return extension.trim().equalsIgnoreCase("gif");
+    }
+
 
     private void hide() {
         // Hide UI first

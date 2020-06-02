@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources> <string name="app_name">Virus Search</string>
-    <string name="information_login">INFORMACION Y BREVE RESUMEN DE LA APP</string>
+    <string name="information_login">Una vez que inicies sesion no podras cerrarla, esto es por seguridad de tus datos</string>
     <string name="api_key_nasa">an1IMjVwogVGhmgvr7f0BgEu6u2g3YRW5J2qisFf</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Inicio</string>
     <string name="title_dashboard">Tablero</string>
     <string name="title_map">Mapa</string>
-
+    <string name="title_country" >Paises</string>
     <string name="myDiagnosis">Mi Diagnostico</string>
     <string name="Poll">Encuesta</string>
     <string name="Info">Info</string>
-
+    <string name="fecha">Fecha </string>
 
     <string name="text_home">encuentra información relevante dando click en las tarjetas</string>
 

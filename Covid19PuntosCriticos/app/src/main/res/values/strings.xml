@@ -6,8 +6,9 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_map">Map</string>
-    <string name="title_country" translatable="false">Country</string>
+    <string name="title_country" >Country</string>
 
+    <string name="fecha">Date </string>
     <string name="myDiagnosis">My Diagnosis</string>
     <string name="Poll">Poll</string>
     <string name="Info">Info</string>

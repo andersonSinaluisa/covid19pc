@@ -47,6 +47,9 @@ public class ServicesUbication extends Service {
     final Firebase db = new Firebase();
 
     private int count;
+
+  
+
     @Override
     public void onCreate() {
 
@@ -140,6 +143,7 @@ public class ServicesUbication extends Service {
                         for (int x =0; x<obj.getChildrenCount();x++){
                             System.out.println(obj.getKey()+"==>" +obj.getValue());
                                 HashMap<String,Object> o = (HashMap<String,Object>) obj.getValue();
+
                             for (Map.Entry<String, Object> entry : o.entrySet()){
                                 System.out.println(entry.getKey()+"==>"+entry.getValue());
                                 if(!entry.getKey().equals("id") || !entry.getKey().equals("id_usuario")){

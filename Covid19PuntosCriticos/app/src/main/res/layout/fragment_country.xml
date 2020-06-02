@@ -12,7 +12,7 @@
         android:id="@+id/linearLayoutTotalCountires"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/black_overlay"
+        android:background="@color/colorAccent"
         android:gravity="center">
 
         <TextView
@@ -27,6 +27,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:background="@color/colorPrimaryDark"
         android:layout_below="@id/linearLayoutTotalCountires"
         android:id="@+id/rvCovidCountry"
         android:layout_width="match_parent"
