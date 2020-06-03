@@ -37,7 +37,10 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.today.covid_19puntoscriticos.Main.ui.country.CovidCountry;
 import com.today.covid_19puntoscriticos.R;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -53,6 +56,7 @@ public class DashboardFragment extends Fragment {
     private  int[]sale = new int[]{90,50,70};
     private  int[]colors=new int[]{Color.BLACK,Color.RED,Color.BLUE};
     private DashboardViewModel dashboardViewModel;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -89,6 +93,7 @@ public class DashboardFragment extends Fragment {
                 try {
 
                     JSONObject jsonObject = new JSONObject(response.toString());
+
                     tvTotalConfirmed.setText(jsonObject.getString("cases"));
                     tvTotalDeaths.setText(jsonObject.getString("deaths"));
                     tvTotalRecovered.setText(jsonObject.getString("recovered"));

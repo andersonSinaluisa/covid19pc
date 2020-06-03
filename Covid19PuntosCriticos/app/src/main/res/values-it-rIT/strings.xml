@@ -86,14 +86,7 @@ Se hai sintomi lievi, come tosse lieve o febbre, generalmente non hai bisogno di
         \ n Se possibile, chiama il tuo fornitore di assistenza sanitaria in anticipo in modo che possano indirizzarti al giusto centro sanitario.
     </string>
 
-    <string name="negative_symptoms">
-       Praticare l igiene respiratoria e delle mani è importante in TUTTI i tempi e il modo migliore per proteggere te stesso e gli altri. \ n
 
-     Quando possibile, mantieni almeno un metro di distanza tra te e gli altri.
-        \ n Questo è particolarmente importante se sei accanto a qualcuno che tossisce o starnutisce.
-        \ n Poiché alcune persone infette potrebbero non avere ancora sintomi o i loro sintomi potrebbero essere lievi,
-        \ n dovresti mantenere una distanza fisica da tutti se ti trovi in ​​un'area in cui circola il virus COVID-19.
-    </string>
     <string name="recomendation">
        I sintomi confermati di covid 19 sono stati 14, ma puoi essere asintomatico,
         ricordati di indossare una maschera e lavarti spesso le mani
@@ -103,16 +96,7 @@ Se hai sintomi lievi, come tosse lieve o febbre, generalmente non hai bisogno di
 
 
     <!-- About -->
-    <string name="info_app">
 
-VirusSearch è un app che promette di fornire informazioni aggiornate sulle aree di maggiore interesse
-\ n infezione di un virus specifico, nel primo soggiorno questa applicazione si concentrerà sul Covid-19
-\ n A causa della situazione attuale, l applicazione è facile da capire e interattiva,
-\ n I punti chiave da evidenziare sono: l identificazione dei settori di pericolo attraverso una mappa di calore secondo
-\ n livello di rischio, informazioni statistiche ufficiali in tutto il mondo, anche lo sviluppo dell'autogestione digitale
-\ n attraverso un modulo creato dagli utenti per identificare se stanno trasportando il virus, possono anche andare
-\ n aggiorna il tuo stato di salute.
-    </string>
     <string name="st_about_as">
         About
     </string>
