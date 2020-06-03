@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Virus Search</string>
+    <string name="information_login">INFORMACION Y BREVE RESUMEN DE LA APP</string>
+    <string name="api_key_nasa">an1IMjVwogVGhmgvr7f0BgEu6u2g3YRW5J2qisFf</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_map">Map</string>
+    <string name="title_country" >Country</string>
+
+    <string name="fecha">Date </string>
+    <string name="myDiagnosis">Meu diagnóstico</string>
+    <string name="Poll">Votação</string>
+    <string name="Info">Info</string>
+
+
+    <!-- Login -->
+    <string name="password">Senha</string>
+    <string name="email">O email</string>
+    <!-- Activity Login -->
+    <string name="btn_login">Conecte-se</string>
+    <string name="btn_registro">inscrever-se</string>
+
+
+    <!-- Activity Registro -->
+    <string name="btn_registro_activity">inscrever-se</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="home_second">Home Second</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_maps">Map</string>
+
+    <string name="yes">sim</string>
+    <string name="No">Não</string>
+
+    <!-- MENU -->
+    <string name="account">conta</string>
+    <string name="text_home">encontre informações relevantes clicando nos cartões</string>
+
+    <string name="diagnosis">Seus sintomas</string>
+    <string name="meses">Dias</string>
+    <!-- POLL-->
+    <string name="diseases">indicar se você tem alguma dessas doenças</string>
+    <string name="symptoms">você sentiu algum destes sintomas hoje?</string>
+    <string name="basicInfo">responda a essas perguntas de informações básicas</string>
+    <string name="save_poll">Salve</string>
+
+
+    <!--DASHBOARD-->
+    <string name="textMainDashboard">Estatísticas globais do COVID-19</string>
+    <string name="confirmed">confirmad</string>
+    <string name="recovered">recuperad</string>
+    <string name="deceased">falecid</string>
+    <!-- Mensaje -->
+    <string name="saving">Salvando</string>
+    <string name="edad">Intervalo de alcance</string>
+    <string name="genr">Gênero</string>
+
+
+
+    <string name="vacios">por favor responda as perguntas</string>
+    <string name="text_primary_diagnosis">Diagnóstico dos seus sintomas durante este mês</string>
+
+
+    <string name="positives_symptomas">
+        Se você tiver sintomas leves, como tosse ou febre leve, geralmente não precisa procurar atendimento médico. \ N
+        Fique em casa, isole-se e observe seus sintomas. Siga as diretrizes nacionais sobre auto-isolamento. \ n
+        No entanto, se você mora em uma área com malária ou dengue, é importante que você não ignore a febre. \ N
+        Procure ajuda médica. Quando você for ao centro de saúde, use uma máscara, se possível, fique a pelo menos um metro de distância
+        de outras pessoas e não toque nas superfícies com as mãos. Caso a pessoa doente seja criança, ajude-a a seguir este conselho.
+
+        \ n Consulte um médico imediatamente se tiver problemas para respirar ou sentir dor ou pressão no peito.
+        \ n Se possível, ligue para o seu médico com antecedência para que ele possa direcioná-lo ao centro de saúde certo.
+
+
+    </string>
+
+    <string name="negative_symptoms">
+       Praticar a higiene respiratória e das mãos é importante em TODOS os momentos e a melhor maneira de proteger a si e aos outros. \ n
+
+      Sempre que possível, mantenha pelo menos um metro de distância entre você e os outros.
+        \ n Isso é especialmente importante se você estiver ao lado de alguém que tosse ou espirra.
+        \ n Como algumas pessoas infectadas ainda não apresentam sintomas ou podem ser leves,
+        \ n você deve manter uma distância física de todos se estiver em uma área em que o vírus COVID-19 está circulando.
+    </string>
+    <string name="recomendation">
+        The confirmed symptoms of covid 19 have been 14, but you can be asymptomatic,
+        remember to wear a mask and wash your hands frequently
+    </string>
+
+
+
+
+    <!-- About -->
+    <string name="info_app">
+       O VirusSearch é um aplicativo que promete fornecer informações atualizadas sobre as áreas de maior
+\ n infecção de um vírus específico, na primeira estadia, este aplicativo se concentrará no Covid-19
+\ n Devido à situação atual, o aplicativo é fácil de entender e interativo,
+\ n Os pontos principais a serem destacados são: a identificação de setores de perigo através de um mapa de calor de acordo com
+\ n nível de risco, informações estatísticas oficiais em todo o mundo, também o desenvolvimento de autogerenciamento digital
+\ n através de um formulário feito pelos usuários para identificar se eles estão portando o vírus, eles também podem acessar
+\ n atualizando seu status de saúde.
+    </string>
+    <string name="st_about_as">
+        Sobre
+    </string>
+    <string name="info_integrantes">
+        Integrantes:
+        -Carla Nereida Utterman Muñoz
+        - Galo Andres Manzo Villareal
+        - Drubber Elian Sanchez Macias
+        - Manuel Adrian Carpo Moran
+        -Anderson Javier Sinualisa Tobar
+        -Kelly Daniela Mercado Reyes
+    </string>
+
+
+    <!-- Slide Poll -->
+    <string name="title_activity_poll_slide">Slide</string>
+    <string name="text_slide_poll">
+
+Precisamos da sua ajuda para fornecer informações sobre as áreas afetadas pela covid-19,
+         preencha a seguinte pesquisa
+    </string>
+    <string name="next">Next  </string>
+</resources>

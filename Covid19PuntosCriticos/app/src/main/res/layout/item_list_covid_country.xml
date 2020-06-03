@@ -21,7 +21,7 @@
             android:layout_width="48dp"
             android:layout_height="32dp"/>
 
-        <TextView
+       <!-- <TextView
             android:layout_marginLeft="8dp"
             android:id="@+id/tvTotalCases"
             android:layout_gravity="center_horizontal"
@@ -31,7 +31,7 @@
             android:layout_height="match_parent"
             android:textColor="@color/colorTotalConfirmed"
             android:textSize="20sp"
-            tools:text="82343" />
+            tools:text="82343" />-->
 
         <TextView
             android:id="@+id/tvCountryName"
