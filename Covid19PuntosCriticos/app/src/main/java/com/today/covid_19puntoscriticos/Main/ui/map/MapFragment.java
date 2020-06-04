@@ -12,12 +12,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -80,24 +82,68 @@ public class MapFragment extends Fragment  implements GoogleMap.OnCameraIdleList
         getZones();
 
 
-        //si tiene el permiso
+
+
+
         if(!(permissionchecked == PackageManager.PERMISSION_GRANTED)){
-            //inicia el servicio
             ActivityCompat.requestPermissions(getActivity(),
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     1);
 
 
         }else{
-            getActivity().startService(new Intent(root.getContext(), ServicesUbication.class));
+            assert locationManager != null;
+            if(locationManager.isProviderEnabled("gps")){
+                    getActivity().startService(new Intent(root.getContext(), ServicesUbication.class));
+
+                }else{
+                    dialogGps();
+
+            }
         }
 
 
         return root;
     }
 
+    private void dialogGps() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        LayoutInflater layoutInflater = getLayoutInflater();
+        final View view = layoutInflater.inflate(R.layout.dialog_gps, null);
+        builder.setView(view);
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+        dialog.setCancelable(false);
+        Button btnyes = (Button) view.findViewById(R.id.btn_gps_enable);
+        Button btnno = (Button) view.findViewById(R.id.btn_gps_diseable);
+        btnyes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+
+                Intent gpsOptionsIntent = new Intent(
+                        android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivity(gpsOptionsIntent);
+
+
+            }
+        });
+
+        btnno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+    }
+
     @Override
     public void onCameraIdle() {
+
+
+
+
 
     }
 

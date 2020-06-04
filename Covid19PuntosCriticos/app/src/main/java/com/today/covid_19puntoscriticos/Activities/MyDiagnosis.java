@@ -41,6 +41,7 @@ import java.util.Map;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.email;
+import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getPositionBoolean;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.id;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.username;
 
@@ -98,7 +99,7 @@ public class MyDiagnosis extends AppCompatActivity {
 
 
         System.out.println(evaluate+"EVALUACION");
-            if(evaluate==1){
+            if(getPositionBoolean(MyDiagnosis.this)){
                 recomendaciones.setText(getResources().getString(R.string.positives_symptomas));
             }else{
                 recomendaciones.setText(getResources().getString(R.string.negative_symptoms));
@@ -168,6 +169,15 @@ public class MyDiagnosis extends AppCompatActivity {
 
                                 }
 
+
+                                if(entry.getKey().equals("mes")){
+
+
+
+                                }
+                                if(mes==_month){
+
+                                }
                                 lineEntries.add(new BarEntry((float) dia,(float)count/o.size()));
 
 

@@ -35,9 +35,11 @@ import com.today.covid_19puntoscriticos.Activities.Poll;
 import com.today.covid_19puntoscriticos.Activities.Service;
 import com.today.covid_19puntoscriticos.Adapters.SpinnerAdapter;
 import com.today.covid_19puntoscriticos.Config.Firebase;
+import com.today.covid_19puntoscriticos.Model.Dispositivo;
 import com.today.covid_19puntoscriticos.Model.Range;
 import com.today.covid_19puntoscriticos.Model.Usuario;
 import com.today.covid_19puntoscriticos.R;
+import com.today.covid_19puntoscriticos.Services.ServicesToken;
 import com.today.covid_19puntoscriticos.Slides.PollSlideActivity;
 
 import androidx.annotation.NonNull;
@@ -59,6 +61,7 @@ import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getBas
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getDiseases;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getGenr;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getPoll;
+import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getToken;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.id;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.poll;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.userdata;
@@ -342,7 +345,7 @@ public class MainActivity extends AppCompatActivity {
         final String photo_url = _url+"";
         final String provider = _provider;
 
-
+        final DatabaseReference refd =db.getmDatabase("dispositivos");
 
         final DatabaseReference referenceUsers = db.getmDatabase("Usuarios");
 
@@ -374,6 +377,13 @@ public class MainActivity extends AppCompatActivity {
                                newUser.setPhoto_url(photo_url);
                                newUser.setProvider(provider);
                                referenceUsers.child(newUser.getUID()).setValue(newUser);
+
+                               Dispositivo dis = new Dispositivo();
+                               dis.setId(id(MainActivity.this));
+                               dis.setId_usuario(id(MainActivity.this));
+                               dis.setEstado(1);
+                               dis.setToken(getToken(MainActivity.this));
+                               refd.child(dis.getId()).setValue(dis);
                             //   Toast.makeText(MainActivity.this, email, Toast.LENGTH_LONG).show();
                                break;
 
@@ -390,6 +400,12 @@ public class MainActivity extends AppCompatActivity {
                     newUser.setProvider(provider);
                     referenceUsers.child(newUser.getUID()).setValue(newUser);
 
+                    Dispositivo dis = new Dispositivo();
+                    dis.setId(id(MainActivity.this));
+                    dis.setId_usuario(id(MainActivity.this));
+                    dis.setEstado(1);
+                    dis.setToken(getToken(MainActivity.this));
+                    refd.child(dis.getId()).setValue(dis);
                 }
             }
 
@@ -432,17 +448,13 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(MainActivity.this, Diseases.class));
                 }else{
                     if(!getPoll(MainActivity.this)){
-                        startActivity(new Intent(MainActivity.this, Poll.class));
+                        startActivity(new Intent(MainActivity.this, PollSlideActivity.class));
                     }else {
                         if(!getBasicInfo(MainActivity.this)){
                             startActivity(new Intent(MainActivity.this, BasicInfo.class));
                         }else {
-                            if(!getPoll(MainActivity.this)){
-                                startActivity(new Intent(MainActivity.this, PollSlideActivity.class));
-
-                            }else{
                                 startActivity(new Intent(MainActivity.this, Poll.class));
-                            }
+
                         }
                     }
 

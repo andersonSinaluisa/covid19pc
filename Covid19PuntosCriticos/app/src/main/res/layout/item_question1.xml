@@ -4,49 +4,54 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-    <GridLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:columnCount="3"
-        android:columnOrderPreserved="true"
-        android:rowCount="1"
-        android:alignmentMode="alignMargins"
+        android:layout_height="match_parent"
+
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         >
 
         <TextView
+            android:layout_width="match_parent"
             android:id="@+id/questionBase"
-            android:layout_width="0dp"
             android:fontFamily="@font/poppins"
             android:layout_height="wrap_content"
             android:padding="@dimen/activity_vertical_margin"
             android:layout_columnWeight="1"
             android:text="Diabetes" />
 
+
+
+
+
+    </LinearLayout>
+    <LinearLayout android:layout_height="match_parent"
+        android:layout_width="match_parent">
         <RadioGroup
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
             android:id="@+id/radioGroupBase"
             android:orientation="horizontal"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_marginLeft="25dp">
             <RadioButton
                 android:id="@+id/answerBaseLeft"
                 android:layout_marginRight="5dp"
                 android:textDirection="locale"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent">
 
             </RadioButton>
             <RadioButton
 
                 android:id="@+id/answerBaseRight"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent">
 
             </RadioButton>
 
 
         </RadioGroup>
-
-    </GridLayout>
-
+    </LinearLayout>
 </LinearLayout>

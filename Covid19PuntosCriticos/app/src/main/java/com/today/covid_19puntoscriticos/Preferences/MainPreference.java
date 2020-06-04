@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 
 import com.today.covid_19puntoscriticos.R;
 
+import java.util.Date;
+
 public class MainPreference {
 
     public static void userdata(Context c, String email, String username, String provider, String id){
@@ -109,5 +111,63 @@ public class MainPreference {
         SharedPreferences sharedPref= c.getSharedPreferences(c.getString(R.string.app_name), c.MODE_PRIVATE);
         return sharedPref.getBoolean("poll",false);
     }
+
+    public static void notificationPoll(Context c, boolean notPoll){
+
+        SharedPreferences sharedPref= c.getSharedPreferences(c.getString(R.string.app_name), c.MODE_PRIVATE);
+        SharedPreferences.Editor edit =sharedPref.edit();
+        edit.putBoolean("notPoll",notPoll);
+        edit.commit();
+
+    }
+
+    public static boolean getNotPoll(Context c){
+
+        SharedPreferences sharedPref= c.getSharedPreferences(c.getString(R.string.app_name), c.MODE_PRIVATE);
+        return sharedPref.getBoolean("notPoll",false);
+    }
+
+    public static void notificationDate(Context c, String notDate){
+
+        SharedPreferences sharedPref= c.getSharedPreferences(c.getString(R.string.app_name), c.MODE_PRIVATE);
+        SharedPreferences.Editor edit =sharedPref.edit();
+        edit.putString("notDate",notDate);
+        edit.commit();
+
+    }
+
+    public static String getNotificationDate(Context c){
+        SharedPreferences sharedPref= c.getSharedPreferences(c.getString(R.string.app_name), c.MODE_PRIVATE);
+        return sharedPref.getString("notDate",null);
+    }
+
+    public static void positionBoolean(Context c, boolean enablePosition){
+
+        SharedPreferences sharedPref= c.getSharedPreferences(c.getString(R.string.app_name), c.MODE_PRIVATE);
+        SharedPreferences.Editor edit =sharedPref.edit();
+        edit.putBoolean("enablePosition",enablePosition);
+        edit.commit();
+
+    }
+
+    public static boolean getPositionBoolean(Context c){
+        SharedPreferences sharedPref= c.getSharedPreferences(c.getString(R.string.app_name), c.MODE_PRIVATE);
+        return sharedPref.getBoolean("enablePosition",false);
+    }
+
+    public static void token(Context c, String token){
+
+        SharedPreferences sharedPref= c.getSharedPreferences(c.getString(R.string.app_name), c.MODE_PRIVATE);
+        SharedPreferences.Editor edit =sharedPref.edit();
+        edit.putString("token",token);
+        edit.commit();
+
+    }
+    public static String getToken(Context c){
+        SharedPreferences sharedPref= c.getSharedPreferences(c.getString(R.string.app_name), c.MODE_PRIVATE);
+        return sharedPref.getString("token","");
+    }
+
+
 
 }

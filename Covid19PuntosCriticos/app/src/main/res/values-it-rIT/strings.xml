@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Virus Search</string>
-    <string name="information_login">INFORMACION Y BREVE RESUMEN DE LA APP</string>
+    <string name="information_login">Una volta avviata la sessione non sarai in grado di chiuderla, questo è per la sicurezza dei tuoi dati</string>
     <string name="api_key_nasa">an1IMjVwogVGhmgvr7f0BgEu6u2g3YRW5J2qisFf</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>

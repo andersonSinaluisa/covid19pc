@@ -75,6 +75,7 @@
             android:label="@string/app_name" />
 
         <service android:name=".Services.ServicesUbication" />
+        <service android:name=".Services.PollService" />
     </application>
 
 </manifest>

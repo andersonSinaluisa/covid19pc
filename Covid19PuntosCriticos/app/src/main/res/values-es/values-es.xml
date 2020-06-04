@@ -132,6 +132,34 @@
         Necesitamos de tu ayuda para dar informacion de las zonas afectadas por el covid-19,por favor llena la siguiente encuesta
     </string>
     <string name="next">Siguiente  </string>
+
+
+
+    <string name="notificationPollTitle">
+
+        Realiza la encuesta
+
+    </string>
+
+    <string name="notificationPollDescription">
+        lleva el control de tus síntomas
+    </string>
+
+    <string name="gps_msj">
+
+        Virus Search necesita obtener tu ubicación
+    </string>
+
+    <string name="gps_des">
+tu ubicación servirá para dar información acerca de los puntos críticos
+    </string>
+
+    <string name="acept">
+        Aceptar
+    </string>
+    <string name="cancel">
+        Cancelar
+    </string>
 </resources>
 
 

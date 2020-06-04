@@ -33,11 +33,13 @@ import com.today.covid_19puntoscriticos.Main.MainActivity;
 import com.today.covid_19puntoscriticos.Model.Preguntas;
 import com.today.covid_19puntoscriticos.Model.Usuario;
 import com.today.covid_19puntoscriticos.R;
+import com.today.covid_19puntoscriticos.Services.PollService;
 
 import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -46,7 +48,10 @@ import java.util.UUID;
 
 import static com.google.firebase.database.Transaction.*;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.id;
+import static com.today.covid_19puntoscriticos.Preferences.MainPreference.notificationDate;
+import static com.today.covid_19puntoscriticos.Preferences.MainPreference.notificationPoll;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.poll;
+import static com.today.covid_19puntoscriticos.Preferences.MainPreference.positionBoolean;
 
 public class Poll extends AppCompatActivity {
 
@@ -97,6 +102,10 @@ public class Poll extends AppCompatActivity {
                 final String month = fecha.substring(3,5);
                 if(!m.isEmpty() || m.size()==total){
 
+
+                    configPosition(m);
+
+                    sumarDiasFecha(date,14);
                     m.put("id", UUID.randomUUID().toString());
                     if(id(Poll.this).equals("") || id(Poll.this)==null){
                         currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -115,6 +124,7 @@ public class Poll extends AppCompatActivity {
                     poll(Poll.this,true);
                     dialog.dismiss();
                     startActivity(new Intent(Poll.this, MainActivity.class));
+                    startService(new Intent(Poll.this, PollService.class));
                 }else {
                     dialog.dismiss();
 
@@ -126,13 +136,25 @@ public class Poll extends AppCompatActivity {
 
     }
 
+    private void configPosition(HashMap<String, Object> m) {
+        int count =0;
+        for (Map.Entry<String, Object> entry : m.entrySet()){
+            System.out.println(entry.getKey()+"-->"+entry.getValue());
+            if(!entry.getKey().equals("id") ||!entry.getKey().equals("fecha")
+                    || !entry.getKey().equals("mes") || !entry.getKey().equals("id_usuario")){
 
+                if(entry.getValue().equals(1)){
+                     count++;
+                }
 
+            }
+        }
 
-
-
-
-
+        System.out.println(count+"contador");
+        if(count>7){
+            positionBoolean(Poll.this,true);
+        }
+    }
 
     private void loadSymptoms() {
         //crear una referencia
@@ -211,6 +233,20 @@ public class Poll extends AppCompatActivity {
             layout.addView(questionLayout);
         }
 
+
+    }
+
+
+
+    public Date sumarDiasFecha(Date fecha, int dias){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(fecha); // Configuramos la fecha que se recibe
+        calendar.add(Calendar.DAY_OF_YEAR, dias);  // numero de días a añadir, o restar en caso de días<0
+
+        notificationPoll(Poll.this,true);
+        notificationDate(Poll.this, calendar.getTime().toString());
+        System.out.println(calendar.getTime().toString());
+        return calendar.getTime(); // Devuelve el objeto Date con los nuevos días añadidos
 
     }
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:fontFamily="sans-serif"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="@string/gps_msj"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </TextView>
+
+    <TextView
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="20dp"
+        android:text="@string/gps_des"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </TextView>
+
+    <Button
+        android:backgroundTint="@color/colorPrimaryDark"
+
+        android:textColor="@color/colorWhite"
+        android:text="@string/acept"
+        android:id="@+id/btn_gps_enable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </Button>
+
+    <Button
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
+        android:text="@string/cancel"
+        android:id="@+id/btn_gps_diseable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </Button>
+
+
+</LinearLayout>

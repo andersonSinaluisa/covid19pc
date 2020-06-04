@@ -30,6 +30,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.email;
+import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getPositionBoolean;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.username;
 
 public class ServicesUbication extends Service {
@@ -63,7 +64,6 @@ public class ServicesUbication extends Service {
         username = username(thisContext);
         id= MainPreference.id(thisContext);
         LocationManager locationManager = (LocationManager) thisContext.getSystemService(Context.LOCATION_SERVICE);
-        getSymptoms(id);
 
         System.out.println("CONTADOR "+ count);
         assert locationManager != null;
@@ -72,9 +72,17 @@ public class ServicesUbication extends Service {
                 @SuppressLint("ShowToast")
                 @Override
                 public void onLocationChanged(Location location) {
-                    latitud = location.getLatitude();
-                    longitud = location.getLongitude();
-                    System.out.println(longitud+"--->"+latitud+" GPS POSICION");
+                    System.out.println(getPositionBoolean(thisContext)+"---"+location.getLatitude()+"--->"+location.getLongitude());
+
+                    if(getPositionBoolean(thisContext)){
+                        HistorialPosition p = new HistorialPosition();
+                        p.setId(UUID.randomUUID().toString());
+                        p.setId_usuario(id);
+                        p.setLatitud(location.getLatitude());
+                        p.setLongitud(location.getLongitude());
+                        final DatabaseReference posicion = db.getmDatabase("Historial");
+                        posicion.child(p.getId()).setValue(p);
+                    }
                 }
 
                 @Override
@@ -97,16 +105,7 @@ public class ServicesUbication extends Service {
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
 
             if(longitud!=0 && latitud!=0){
-                if(validatorSymptoms){
 
-                    HistorialPosition p = new HistorialPosition();
-                    p.setId(UUID.randomUUID().toString());
-                    p.setId_usuario(id);
-                    p.setLatitud(latitud);
-                    p.setLongitud(longitud);
-                    final DatabaseReference posicion = db.getmDatabase("Historial");
-                    posicion.child(p.getId()).setValue(p);
-                }
             }
 
 

@@ -39,7 +39,8 @@
 
 
             <Button
-                android:background="@color/colorAccent"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/colorAccent"
                 android:text="@string/save_poll"
                 android:id="@+id/btn_save_poll"
                 android:layout_width="match_parent"
