@@ -168,6 +168,19 @@ public class MainPreference {
         return sharedPref.getString("token","");
     }
 
+    public static void n_sintomas(Context c, int n_sintomas){
+
+        SharedPreferences sharedPref= c.getSharedPreferences(c.getString(R.string.app_name), c.MODE_PRIVATE);
+        SharedPreferences.Editor edit =sharedPref.edit();
+        edit.putInt("n_sintomas",n_sintomas);
+        edit.commit();
+
+    }
+
+    public static int getN_sintomas(Context c){
+        SharedPreferences sharedPref= c.getSharedPreferences(c.getString(R.string.app_name), c.MODE_PRIVATE);
+        return sharedPref.getInt("n_sintomas",0);
+    }
 
 
 }

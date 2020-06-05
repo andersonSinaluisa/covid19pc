@@ -56,6 +56,11 @@
     <string name="save_poll">Save</string>
 
 
+    <string name="no_network">
+        No Network
+    </string>
+
+
     <!--DASHBOARD-->
     <string name="textMainDashboard">COVID-19 Global Statistics</string>
     <string name="confirmed">confirmed</string>
@@ -111,20 +116,71 @@
          \n through a form made by users to identify if they are carrying the virus, they can also go
          \n updating your health status.
     </string>
+
+
+
+
     <string name="st_about_as">
         About
     </string>
-    <string name="info_integrantes">
-        Integrantes:
-        -Carla Nereida Utterman Muñoz
-        - Galo Andres Manzo Villareal
-        - Drubber Elian Sanchez Macias
-        - Manuel Adrian Carpo Moran
-        -Anderson Javier Sinualisa Tobar
-        -Kelly Daniela Mercado Reyes
+    <string name="director">
+        Director de proyecto
+    </string>
+    <string name="name_director">
+          \n- Jose Luis Tapia
+    </string>
+    <string name="desarrolladores">
+        Desarrolladores
+    </string>
+    <string name="name_dev">
+
+        \n- Anderson Javier Sinaluisa
+        \n
+        \n- Manuel Adrian Carpio
+        \n
+        \n- Drubber Elian Sanchez
+        \n
+    </string>
+    <string name="documentacion">
+        Documentacion
+    </string>
+    <string name="name_doc">
+
+        \n - Kelly Daniela Mercado
+        \n
+        \n- Cristhofer Peralta
+
+    </string>
+    <string name="colaboradores">
+        Colaboradores
     </string>
 
+    <string name="name_cob">
 
+
+        \n
+        \n- Carla Nereida Utterman
+        \n
+        \n- Galo Andres Manzo
+
+
+    </string>
+
+    <string name="club">
+
+        By:
+        \n Club de programación Java ISTG
+    </string>
+    <string name="dev">
+
+        Creditos
+    </string>
+    <string name="correo">
+       covid19pcec@gmail.com
+    </string>
+    <string name="asistent">
+        Contact
+    </string>
     <!-- Slide Poll -->
     <string name="title_activity_poll_slide">Slide</string>
     <string name="text_slide_poll">
@@ -158,5 +214,24 @@ your location will serve to give information about the critical points
     </string>
     <string name="cancel">
         Cancel
+    </string>
+
+
+
+    <!-- app -->
+    <string name="version">V1.0 Beta</string>
+
+
+    <!-- DIAGNOSTICO-->
+    <string name="start_details_symptoms">
+
+        El numero de sintomas que presentas es
+    </string>
+
+    <string name="positive_n_simptoms">
+
+    </string>
+    <string name="negative_n_simptoms">
+    No presentas Sintomas
     </string>
 </resources>

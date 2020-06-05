@@ -47,7 +47,9 @@
     <!-- MENU -->
     <string name="account">cuenta</string>
 
-
+    <string name="no_network">
+        Sin conexión a internet
+    </string>
     <!-- POLL-->
     <string name="diseases">indica si padeces alguna de estas enfermedades</string>
     <string name="symptoms">has sentido alguno de estos síntomas hoy?</string>
@@ -109,23 +111,71 @@
         \n por la coyuntura por la que se está atravesando, el aplicativo es de fácil comprensión e interactivo,
         \n los puntos claves a destacar son: la identificación de sectores de peligro a través de un mapa de calor según
         \n nivel de riesgo, información estadística oficial a nivel mundial, también el desarrollo de un autotriaje digital
-        \n a través de un formulario realizado por los usuarios para identificar si son portan el virus además estos pueden ir
+        \n a través de un formulario realizado por los usuarios para identificar si portan el virus además estos pueden ir
         \n actualizando su estado de salud.
     </string>
     <string name="st_about_as">
 
         Acerca de la app
     </string>
-
-    <string name="info_integrantes">
-        Integrantes:
-       \n -Carla Nereida Utterman Muñoz
-        \n - Galo Andres Manzo Villareal
-        \n - Drubber Elian Sanchez Macias
-        \n - Manuel Adrian Carpo Moran
-        \n -Anderson Javier Sinualisa Tobar
-        \n -Kelly Daniela Mercado Reyes
+    <string name="director">
+        Director de proyecto
     </string>
+    <string name="name_director">
+          \n- Jose Luis Tapia
+    </string>
+    <string name="desarrolladores">
+        Desarrolladores
+    </string>
+    <string name="name_dev">
+
+        \n- Anderson Javier Sinaluisa
+        \n
+        \n- Manuel Adrian Carpio
+        \n
+        \n- Drubber Elian Sanchez
+        \n
+    </string>
+    <string name="documentacion">
+        Documentacion
+    </string>
+    <string name="name_doc">
+
+        \n
+        \n - Kelly Daniela Mercado
+        \n
+        \n- Cristhofer Peralta
+        \n
+    </string>
+    <string name="colaboradores">
+        Colaboradores
+    </string>
+
+    <string name="name_cob">
+
+
+        \n
+        \n- Carla Nereida Utterman
+        \n
+        \n- Galo Andres Manzo
+
+
+    </string>
+    <string name="club">
+         Desarrollado por:
+        \n Club de programación Java ISTG
+    </string>
+    <string name="dev">
+
+        Credi
+    </string>
+    <string name="correo">
+       covid19pcec@gmail.com
+    </string>
+    <string name="asistent">
+        Contact
+    </string>
+
     <!-- Slide Poll -->
     <string name="title_activity_poll_slide">Slide</string>
     <string name="text_slide_poll">
@@ -159,6 +209,12 @@ tu ubicación servirá para dar información acerca de los puntos críticos
     </string>
     <string name="cancel">
         Cancelar
+    </string>
+    <!-- app -->
+    <string name="version">V1.0 Beta</string>
+
+    <string name="negative_n_simptoms">
+    No presentas Sintomas
     </string>
 </resources>
 

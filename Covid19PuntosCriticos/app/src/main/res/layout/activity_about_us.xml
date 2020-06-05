@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
+    android:background="@color/colorAccent"
     tools:context=".Activities.AboutUs">
 
     <ScrollView
@@ -14,57 +14,167 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_bold"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:text="@string/st_about_as"
-                android:textColor="@color/colorWhite"
-                android:textSize="25sp" />
+
             <LinearLayout
+                android:layout_marginTop="20dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@mipmap/ic_launcher"/>
                 <TextView
-
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="@color/colorWhite"
+                    android:text="@string/version"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                 </TextView>
             </LinearLayout>
 
-            <com.today.covid_19puntoscriticos.Config.JustifyTextView
+
+     <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="15dp"
-                android:gravity="center"
-                android:fontFamily="@font/poppins"
+                android:fontFamily="sans-serif-light"
                 android:text="@string/info_app"
                 android:textColor="@color/colorWhite"
-                android:textSize="20sp"
+                android:textSize="15dp"
                 />
 
 
+            <LinearLayout
+                android:background="@drawable/line_divider"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
+            </LinearLayout>
 
+            <LinearLayout
+                android:background="@color/colorISTG"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
+                <TextView
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="15dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="@string/asistent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="15dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="@string/correo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+                <LinearLayout
+                    android:background="@drawable/line_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="15dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/club"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </TextView>
+
+                <TextView
+
+                    android:fontFamily="sans-serif-condensed"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/colorWhite"
+                    android:text="@string/director"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </TextView>
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/colorPrimary"
+                    android:text="@string/name_director"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </TextView>
+                <TextView
+                    android:fontFamily="sans-serif-condensed"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/colorWhite"
+                    android:text="@string/desarrolladores"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/colorPrimary"
+                    android:text="@string/name_dev"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </TextView>
+                <TextView
+                    android:fontFamily="sans-serif-condensed"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/colorWhite"
+                    android:text="@string/documentacion"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/colorPrimary"
+                    android:text="@string/name_doc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </TextView>
+                <TextView
+                    android:fontFamily="sans-serif-condensed"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/colorWhite"
+                    android:text="@string/colaboradores"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/colorPrimary"
+                    android:text="@string/name_cob"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </TextView>
+            </LinearLayout>
 
 
 
         </LinearLayout>
     </ScrollView>
-
-
-
 </LinearLayout>

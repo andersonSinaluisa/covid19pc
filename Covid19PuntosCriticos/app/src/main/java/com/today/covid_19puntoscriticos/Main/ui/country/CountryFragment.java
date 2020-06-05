@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -34,7 +35,9 @@ public class CountryFragment extends Fragment {
 
 RecyclerView rvCovidCountry;
 ProgressBar progressBar;
-TextView tvTotalCountry;
+TextView tvTotalCountry, net_work;
+
+LinearLayout linearLayoutTotalCountires;
 
 private static final String TAG = CountryFragment.class.getSimpleName();
 
@@ -46,15 +49,16 @@ ArrayList<CovidCountry> covidCountries;
         View root = inflater.inflate(R.layout.fragment_country, container, false);
 
         // call view
+        linearLayoutTotalCountires= (LinearLayout) root.findViewById(R.id.linearLayoutTotalCountires);
         rvCovidCountry = root.findViewById(R.id.rvCovidCountry);
         progressBar= root.findViewById(R.id.progress_circular_country);
         tvTotalCountry = root.findViewById(R.id.tvTotalCountries);
         rvCovidCountry.setLayoutManager(new LinearLayoutManager(getActivity()));
-
+        net_work =(TextView) root.findViewById(R.id.net_work_country);
         DividerItemDecoration dividerItemDecoration= new DividerItemDecoration(rvCovidCountry.getContext(), DividerItemDecoration.VERTICAL );
         dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getContext(), R.drawable.line_divider));
         rvCovidCountry.addItemDecoration(dividerItemDecoration);
-
+        net_work.setVisibility(View.INVISIBLE);
         // call volley method
         getDataFromServer();
 
@@ -92,7 +96,7 @@ ArrayList<CovidCountry> covidCountries;
         StringRequest stringRequest= new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                progressBar.setVisibility(View.GONE);
+
                 if (response != null) {
                     Log.e(TAG, "onResponse" + response);
                     try {
@@ -109,6 +113,7 @@ ArrayList<CovidCountry> covidCountries;
                         }
                         tvTotalCountry.setText(jsonArray.length()+" countries");
                         showRecyclerView();
+                        progressBar.setVisibility(View.GONE);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -117,7 +122,9 @@ ArrayList<CovidCountry> covidCountries;
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                linearLayoutTotalCountires.setVisibility(View.GONE);
                 progressBar.setVisibility(View.GONE);
+                net_work.setVisibility(View.VISIBLE);
                 Log.e(TAG, "onResponse:" + error);
             }
         });

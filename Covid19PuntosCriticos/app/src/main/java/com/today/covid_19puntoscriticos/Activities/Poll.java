@@ -31,6 +31,7 @@ import com.today.covid_19puntoscriticos.Config.Firebase;
 import com.today.covid_19puntoscriticos.LoginActivity;
 import com.today.covid_19puntoscriticos.Main.MainActivity;
 import com.today.covid_19puntoscriticos.Model.Preguntas;
+import com.today.covid_19puntoscriticos.Model.Sintomas;
 import com.today.covid_19puntoscriticos.Model.Usuario;
 import com.today.covid_19puntoscriticos.R;
 import com.today.covid_19puntoscriticos.Services.PollService;
@@ -48,6 +49,7 @@ import java.util.UUID;
 
 import static com.google.firebase.database.Transaction.*;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.id;
+import static com.today.covid_19puntoscriticos.Preferences.MainPreference.n_sintomas;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.notificationDate;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.notificationPoll;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.poll;
@@ -103,7 +105,7 @@ public class Poll extends AppCompatActivity {
                 if(!m.isEmpty() || m.size()==total){
 
 
-                    configPosition(m);
+                    configPosition(m,fecha);
 
                     sumarDiasFecha(date,14);
                     m.put("id", UUID.randomUUID().toString());
@@ -121,6 +123,9 @@ public class Poll extends AppCompatActivity {
                     m.put("mes",month);
                     final DatabaseReference poll = db.getmDatabase("Poll");
                     poll.child(m.get("id").toString()).setValue(m);
+
+
+
                     poll(Poll.this,true);
                     dialog.dismiss();
                     startActivity(new Intent(Poll.this, MainActivity.class));
@@ -136,7 +141,7 @@ public class Poll extends AppCompatActivity {
 
     }
 
-    private void configPosition(HashMap<String, Object> m) {
+    private void configPosition(HashMap<String, Object> m, String fecha) {
         int count =0;
         for (Map.Entry<String, Object> entry : m.entrySet()){
             System.out.println(entry.getKey()+"-->"+entry.getValue());
@@ -150,10 +155,22 @@ public class Poll extends AppCompatActivity {
             }
         }
 
-        System.out.println(count+"contador");
+        n_sintomas(Poll.this,count);
+
+        System.out.println(count+"contador"+fecha);
         if(count>7){
             positionBoolean(Poll.this,true);
         }
+
+        final DatabaseReference refNS = db.getmDatabase("Numero_Sintomas");
+        Sintomas s = new Sintomas();
+        s.setId( UUID.randomUUID().toString());
+        s.setFecha(fecha);
+        s.setId_usuario(id(Poll.this));
+        s.setNumero_sintomas(count);
+        refNS.child(s.getId()).setValue(s);
+
+
     }
 
     private void loadSymptoms() {

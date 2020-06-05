@@ -15,7 +15,7 @@ import com.today.covid_19puntoscriticos.Main.MainActivity;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.id;
 
 public class SplashScree extends AppCompatActivity {
-    private  final  int DURACION_SPLASH=4000;
+    private  final  int DURACION_SPLASH=3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

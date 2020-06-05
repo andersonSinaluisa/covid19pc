@@ -3,13 +3,16 @@
     <color name="colorPrimary">#021F75</color>
     <color name="colorPrimaryDark">#3F51B5</color>
     <color name="colorAccent">#0D66FF</color>
+    <color name="colorISTG">#3E8BDF</color>
     <color name="colorBlack">#000000</color>
+
 
     <color name="colorWhite">#ffffff</color>
 
     <color name="black_overlay">#66000000</color>
 
     <color name="colorTotalConfirmed">#e60000</color>
+    <color name="red">#7E0808</color>
     <color name="colorTotalDeaths">#999999</color>
     <color name="colorTotalRecovered">#7bb974</color>
 </resources>

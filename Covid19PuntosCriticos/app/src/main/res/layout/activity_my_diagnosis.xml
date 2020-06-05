@@ -64,6 +64,17 @@
                android:layout_height="match_parent">
 
            </TextView>
+           <TextView
+
+               android:fontFamily="sans-serif-black"
+               android:id="@+id/text_n_sintomas"
+               android:textSize="20dp"
+               android:layout_margin="20dp"
+               android:textColor="@color/colorISTG"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+
+           </TextView>
 
 
            <TextView

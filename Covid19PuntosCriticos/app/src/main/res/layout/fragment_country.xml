@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black_overlay"
+    android:background="@color/colorWhite"
     tools:context=".Main.ui.country.CountryFragment">
 
 
@@ -34,6 +34,17 @@
         android:layout_height="wrap_content"
         tools:listitem="@layout/item_list_covid_country" />
 
+    <TextView
+        android:id="@+id/net_work_country"
+        android:textSize="20dp"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:textColor="@color/colorISTG"
+        android:text="@string/no_network"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </TextView>
     <ProgressBar
         android:id="@+id/progress_circular_country"
         android:layout_width="wrap_content"

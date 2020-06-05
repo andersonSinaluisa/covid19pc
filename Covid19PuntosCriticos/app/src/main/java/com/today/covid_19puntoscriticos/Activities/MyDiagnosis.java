@@ -1,5 +1,4 @@
 package com.today.covid_19puntoscriticos.Activities;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.today.covid_19puntoscriticos.Config.Firebase;
+import com.today.covid_19puntoscriticos.Model.Sintomas;
 import com.today.covid_19puntoscriticos.R;
 
 import org.w3c.dom.Text;
@@ -41,10 +41,10 @@ import java.util.Map;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.email;
+import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getN_sintomas;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.getPositionBoolean;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.id;
 import static com.today.covid_19puntoscriticos.Preferences.MainPreference.username;
-
 public class MyDiagnosis extends AppCompatActivity {
 
     private BarChart lineChart;
@@ -53,6 +53,7 @@ public class MyDiagnosis extends AppCompatActivity {
     private FirebaseUser currentUser=null;
     private TextView user;
     private TextView recomendaciones;
+    private TextView n_sintomas;
     final Firebase db = new Firebase();
     private int count;//y
     private int mes; //x
@@ -73,6 +74,11 @@ public class MyDiagnosis extends AppCompatActivity {
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         user = (TextView)findViewById(R.id.username);
         recomendaciones = (TextView) findViewById(R.id.recomendation);
+        n_sintomas =(TextView) findViewById(R.id.text_n_sintomas);
+
+
+
+
         getSupportActionBar().hide();
 
             img.setImageResource(R.drawable.ic_baseline_account);
@@ -81,7 +87,6 @@ public class MyDiagnosis extends AppCompatActivity {
                 user.setText(email(MyDiagnosis.this));
             }else {
                 user.setText(username(MyDiagnosis.this));
-
             }
 
             if(currentUser.getPhotoUrl()!=null){
@@ -89,9 +94,23 @@ public class MyDiagnosis extends AppCompatActivity {
                 if(url.isEmpty() || url.equals("")){
                     img.setImageDrawable(getDrawable(R.drawable.ic_baseline_account));
                 }else{
-
                     Glide.with(MyDiagnosis.this).load(url).into(img);
                 }
+            }
+
+
+            if(getN_sintomas(MyDiagnosis.this)!=0){
+
+                n_sintomas.setText(getResources().getString(R.string.start_details_symptoms)+" "+getN_sintomas(MyDiagnosis.this));
+                if(getN_sintomas(MyDiagnosis.this)<7){
+                    n_sintomas.setTextColor(R.color.colorAccent);
+                }else{
+                    n_sintomas.setTextColor(R.color.red);
+
+                }
+            }else{
+                n_sintomas.setTextColor(R.color.colorAccent);
+                n_sintomas.setText(getResources().getString(R.string.negative_n_simptoms));
             }
 
 
@@ -116,95 +135,64 @@ public class MyDiagnosis extends AppCompatActivity {
     private void loadData() {
 
         Date date = new Date();
-        SimpleDateFormat sfd = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        SimpleDateFormat sfd = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
         String fecha = sfd.format(date);
 
         final String year = fecha.substring(6,10);
         final String month = fecha.substring(3,5);
         final String day = fecha.substring(0,2);
-        int _year = Integer.parseInt(year);
+        //final String hours = fecha.substring(11,13);
+       // final String minutes =fecha.substring(14,16);
+        //final String seconds = fecha.substring(17,19);
+
+        final int _year = Integer.parseInt(year);
         final int _month = Integer.parseInt(month);
-        int _day = Integer.parseInt(day);
-        System.out.println(year+"AÑO");
-        final DatabaseReference poll = db.getmDatabase("Poll");
+        //final int _hours = Integer.parseInt(hours);
+        //final int _minutes = Integer.parseInt(minutes);
+        //final int _seconds = Integer.parseInt(seconds);
+
+        
+        final DatabaseReference poll = db.getmDatabase("Numero_Sintomas");
         Query q = poll.orderByChild("id_usuario").equalTo(id(MyDiagnosis.this));
         q.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
                     for(DataSnapshot obj : dataSnapshot.getChildren()){
-                        
+                        Sintomas s = obj.getValue(Sintomas.class);
 
-                        for (int x =0; x<obj.getChildrenCount();x++){
-                            //nodo id
-                            System.out.println(obj.getKey()+"==>" +obj.getValue());
-                            //valores dentro del nodo
-                            HashMap<String,Object> o = (HashMap<String,Object>) obj.getValue();
-                            div = o.size();
+                        assert s != null;
+                        String mes = s.getFecha().substring(3,5);
+                        String dia = s.getFecha().substring(0,2);
+                        String anio = s.getFecha().substring(6,10);
+                       // String hours = s.getFecha().substring(12,14);
+                        //String minutes =s.getFecha().substring(15,17);
+                        //String seconds = s.getFecha().substring(16,18);
+                        final int mesInt = Integer.parseInt(mes);
+                        final int diaInt = Integer.parseInt(dia);
+                        final int anioInt = Integer.parseInt(anio);
+                       // final int hoursInt = Integer.parseInt(hours);
+                       // final int minutesInt = Integer.parseInt(minutes);
 
-                            for (Map.Entry<String, Object> entry : o.entrySet()){
-                                System.out.println(entry.getKey()+"==>"+entry.getValue());
-                                if(!entry.getKey().equals("id") || !entry.getKey().equals("id_usuario") || !entry.getKey().equals("fecha")){
+                        if(mesInt==_month && anioInt==_year){
 
-                                    if(entry.getValue().getClass().toString().equals("class java.lang.Long")){
-                                        Long valor =(Long) entry.getValue() ;
-                                        int intValue = valor.intValue();
-                                        if(intValue==1){
-                                            count++;
-
-                                        }
-                                    }
-                                    System.out.println();
-
-                                }
-
-                                if(entry.getKey().equals("fecha")){
-                                    String f =entry.getValue().toString();
-                                    String d = f.substring(0,2);
-                                    String m = f.substring(3,5);
-                                    String y =f.substring(6,10);
-                                    mes =Integer.parseInt(m);
-                                    anio = Integer.parseInt(y);
-                                    dia = Integer.parseInt(d);
-
-                                }
-
-
-                                if(entry.getKey().equals("mes")){
-
-
-
-                                }
-                                if(mes==_month){
-
-                                }
-                                lineEntries.add(new BarEntry((float) dia,(float)count/o.size()));
-
-
-
-                            }
-                            System.out.println(count+"TOTAL DE SINTOMAS");
+                            lineEntries.add(new BarEntry((float) diaInt,(float)s.getNumero_sintomas()));
 
                         }
-
                     }
-                    if((count/div)>7 && (count/div)==div){
-
-                        evaluate=1;
-                    }else{
-                        evaluate=0;
-                    }
-                    lineDataSet = new BarDataSet(lineEntries, getResources().getString(R.string.diagnosis));
-                    Description d = new Description();
-                    d.setText(getResources().getString(R.string.meses));
-                    // Asociamos al gráfico
-                    BarData lineData = new BarData();
-                    lineData.addDataSet(lineDataSet);
-                    lineChart.setData(lineData);
-                    lineChart.setDescription(d);
-                    lineChart.animateXY(2000, 2000);
-                    lineChart.invalidate();
+                    //System.out.println(count+"TOTAL DE SINTOMAS");
                 }
+                lineDataSet = new BarDataSet(lineEntries, getResources().getString(R.string.diagnosis));
+                Description d = new Description();
+                d.setText(getResources().getString(R.string.meses));
+                // Asociamos al gráfico
+                BarData lineData = new BarData();
+                lineData.addDataSet(lineDataSet);
+                lineChart.setData(lineData);
+                lineChart.setDescription(d);
+                lineChart.animateXY(2000, 2000);
+                lineChart.invalidate();
+
             }
 
             @Override

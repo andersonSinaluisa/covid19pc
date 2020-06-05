@@ -2,6 +2,7 @@ package com.today.covid_19puntoscriticos.Main.ui.dashboard;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -51,11 +52,14 @@ public class DashboardFragment extends Fragment {
     private PieChart pieChart;
     private LineChart lineChart;
     private ProgressBar progressBar;
-    private TextView tvTotalConfirmed, tvTotalDeaths, tvTotalRecovered, tvLasUpdated;
+
+    private LinearLayout main;
+    private TextView tvTotalConfirmed, tvTotalDeaths, tvTotalRecovered, tvLasUpdated, net_work;
     private  String[]months=new String[]{"CONFIRMADOS","MUERTOS","RECUPERADOS",};
-    private  int[]sale = new int[]{90,50,70};
+    private  int[]sale = new int[]{45,17,38};
     private  int[]colors=new int[]{Color.BLACK,Color.RED,Color.BLUE};
     private DashboardViewModel dashboardViewModel;
+
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -70,15 +74,17 @@ public class DashboardFragment extends Fragment {
                 textView.setText(s);
             }
         });
+        main = (LinearLayout) root.findViewById(R.id.dashboard_layout);
         tvTotalConfirmed=root.findViewById(R.id.tvLabelTotalConfirmed);
         tvTotalDeaths=root.findViewById(R.id.tvTotalDeaths);
         tvTotalRecovered=root.findViewById(R.id.tvTotalRecovered);
         lineChart = root.findViewById(R.id.lineChart);
         progressBar=root.findViewById(R.id.progress_circular_home);
         pieChart=root.findViewById(R.id.pieChart);
-
-        createCharts();
+        net_work = (TextView) root.findViewById(R.id.net_work);
+        net_work.setVisibility(View.INVISIBLE);
         getData();
+        createCharts();
         return root;
     }
 
@@ -89,7 +95,7 @@ public class DashboardFragment extends Fragment {
 
             @Override
             public void onResponse(String response) {
-                progressBar.setVisibility(View.GONE);
+
                 try {
 
                     JSONObject jsonObject = new JSONObject(response.toString());
@@ -98,6 +104,17 @@ public class DashboardFragment extends Fragment {
                     tvTotalDeaths.setText(jsonObject.getString("deaths"));
                     tvTotalRecovered.setText(jsonObject.getString("recovered"));
 
+                    int cases = Integer.parseInt(jsonObject.getString("cases"));
+                    int deaths = Integer.parseInt(jsonObject.getString("deaths"));
+                    int recovered = Integer.parseInt(jsonObject.getString("recovered"));
+		
+		    int total = cases+deaths+recovered;
+                    sale[0]=(int)(deaths/total)*100;
+                    sale[1]=(int)(recovered/total)*100;
+		    sale[2]=(int) (cases/total)*100;
+
+                    progressBar.setVisibility(View.GONE);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -105,7 +122,9 @@ public class DashboardFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                main.setVisibility(View.GONE);
                 progressBar.setVisibility(View.GONE);
+                net_work.setVisibility(View.VISIBLE);
                 Log.d("ERROR RESPUESTA",error.toString());
             }
         });
@@ -141,9 +160,9 @@ public class DashboardFragment extends Fragment {
 
     private ArrayList<PieEntry>getPieEntries(){
         ArrayList<PieEntry>entries=new ArrayList<>();
-        for (int i=0; i<sale.length;i++)
-            entries.add(new PieEntry(sale[i]));
+        for (int i=0; i<sale.length;i++) entries.add(new PieEntry(sale[i]));
         return entries;
+
     }
 
     private ArrayList<Entry> getLineEntries() {
