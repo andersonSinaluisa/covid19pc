@@ -19,7 +19,6 @@
             android:fontFamily="@font/poppins_bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:textAlignment="center"
             android:textSize="15sp" />
         <TextView
@@ -29,25 +28,18 @@
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/pieChart"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:foregroundGravity="center"
             android:layout_weight="1" />
 
         <com.github.mikephil.charting.charts.LineChart
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="200dp"
             android:layout_weight="1"
-
+            android:foregroundGravity="center"
+            android:layout_gravity="center"
             android:id="@+id/lineChart"/>
-
-
-
-        <!--<com.github.mikephil.charting.charts.BarChart
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:id="@+id/barChart"/>-->
-
     </LinearLayout>
 
     <LinearLayout

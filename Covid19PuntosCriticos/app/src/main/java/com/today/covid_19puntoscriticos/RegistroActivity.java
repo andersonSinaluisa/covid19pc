@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,6 +24,7 @@ public class RegistroActivity extends AppCompatActivity {
     private EditText email;
     private EditText password;
     private Button btn_registro;
+    private TextView loginText;
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -32,9 +34,16 @@ public class RegistroActivity extends AppCompatActivity {
 
         email=(EditText) findViewById(R.id.Email);
         password =(EditText) findViewById(R.id.Password);
-        btn_registro =(Button) findViewById(R.id.btn_registro);
+        btn_registro =(Button) findViewById(R.id.btn_login_register);
+        loginText = (TextView) findViewById(R.id.loginRegisterText);
 
 
+        loginText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegistroActivity.this, LoginActivity.class));
+            }
+        });
 
 
         btn_registro.setOnClickListener(new View.OnClickListener() {

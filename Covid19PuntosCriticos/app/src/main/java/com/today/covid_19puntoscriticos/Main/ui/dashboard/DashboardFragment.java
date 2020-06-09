@@ -56,7 +56,7 @@ public class DashboardFragment extends Fragment {
     private LinearLayout main;
     private TextView tvTotalConfirmed, tvTotalDeaths, tvTotalRecovered, tvLasUpdated, net_work;
     private  String[]months=new String[]{"CONFIRMADOS","MUERTOS","RECUPERADOS",};
-    private  int[]sale = new int[]{45,17,38};
+    private  float[]sale = new float[3];
     private  int[]colors=new int[]{Color.BLACK,Color.RED,Color.BLUE};
     private DashboardViewModel dashboardViewModel;
 
@@ -84,7 +84,7 @@ public class DashboardFragment extends Fragment {
         net_work = (TextView) root.findViewById(R.id.net_work);
         net_work.setVisibility(View.INVISIBLE);
         getData();
-        createCharts();
+
         return root;
     }
 
@@ -107,14 +107,21 @@ public class DashboardFragment extends Fragment {
                     int cases = Integer.parseInt(jsonObject.getString("cases"));
                     int deaths = Integer.parseInt(jsonObject.getString("deaths"));
                     int recovered = Integer.parseInt(jsonObject.getString("recovered"));
-		
-		    int total = cases+deaths+recovered;
-                    sale[0]=(int)(deaths/total)*100;
-                    sale[1]=(int)(recovered/total)*100;
-		    sale[2]=(int) (cases/total)*100;
+                    int total = cases+deaths+recovered;
 
+                    double casesd = (float) cases;
+                    double deathd = (float) deaths;
+                    double recoveredd = (float) recovered;
+
+                    float deathsf = (float)(deathd/total)*100;
+                    float casesf =(float)(recoveredd/total)*100;
+                    float recoveredf =(float)(casesd/total)*100;
+
+                    sale[0]=recoveredf;
+                    sale[1]=deathsf;
+		            sale[2]=casesf;
                     progressBar.setVisibility(View.GONE);
-
+                    createCharts();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -179,9 +186,9 @@ public class DashboardFragment extends Fragment {
     }
     //Eje Vertical o eje Y lado izquierdo
     private void axisLeft(YAxis axis){
-        axis.setSpaceTop(30);
+        axis.setSpaceTop(10);
         axis.setAxisMinimum(0);
-        axis.setGranularity(20);
+        axis.setGranularity(5);
     }
     //Eje Vertical o eje Y lado Derecho
     private void axisRight(YAxis axis){

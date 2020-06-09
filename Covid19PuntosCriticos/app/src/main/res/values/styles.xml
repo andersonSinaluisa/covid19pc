@@ -26,6 +26,9 @@
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">#fff</item>
     </style>
+    <style name="myCustomMenuTextAppearance" parent="android:style/TextAppearance.Widget.IconMenu.Item">
+        <item name="android:textColor">@android:color/primary_text_dark</item>
+    </style>
 
     <style name="LabelFontStyle">
         <item name="fontFamily">@font/poppins</item>

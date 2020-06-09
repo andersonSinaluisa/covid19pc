@@ -110,7 +110,7 @@
             <TextView
                 android:id="@+id/tvDetailTotalDeaths"
                 tools:text="3245"
-                android:textColor="#000000"
+                android:textColor="@color/colorWhite"
                 style="@style/TotalFontStyle"
                 android:layout_marginTop="-10dp"
                 android:layout_centerHorizontal="true"
@@ -137,7 +137,7 @@
             <TextView
                 android:id="@+id/tvDetailTodayDeaths"
                 tools:text="4"
-                android:textColor="#000000"
+                android:textColor="@color/colorWhite"
                 style="@style/TotalFontStyle"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="-10dp"

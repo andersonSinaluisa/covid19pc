@@ -1,7 +1,11 @@
 package com.today.covid_19puntoscriticos.Main.ui.country;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -9,12 +13,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -49,6 +55,8 @@ LinearLayout linearLayoutTotalCountires;
 private static final String TAG = CountryFragment.class.getSimpleName();
 
         List<CovidCountry> covidCountries;
+
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -148,8 +156,11 @@ private static final String TAG = CountryFragment.class.getSimpleName();
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.search_menu,menu);
         MenuItem searchItem = menu.findItem(R.id.adicionar1);
+
         SearchView searchView = new SearchView(getActivity());
-        searchView.setQueryHint("Buscar..");
+
+        searchView.setBackgroundColor(getResources().getColor(R.color.colorWhite));
+        searchView.setQueryHint(getString(R.string.search));
         searchView.setMaxWidth(Integer.MAX_VALUE);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

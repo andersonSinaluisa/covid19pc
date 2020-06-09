@@ -109,7 +109,7 @@ public class Poll extends AppCompatActivity {
 
                     sumarDiasFecha(date,14);
                     m.put("id", UUID.randomUUID().toString());
-                    if(id(Poll.this).equals("") || id(Poll.this)==null){
+                    if(id(Poll.this).equals("") || id(Poll.this)==null || id(Poll.this).isEmpty()){
                         currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
                             assert currentUser != null;

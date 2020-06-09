@@ -8,15 +8,27 @@
     android:background="@drawable/gradient"
     android:layout_gravity="center"
     android:gravity="center">
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
+        android:layout_gravity="center"
         android:foregroundGravity="center"
         android:gravity="center"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints">
+        <TextView
+            android:layout_margin="30dp"
+            android:text="@string/step_register"
+            android:textColor="@color/colorWhite"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </TextView>
         <EditText
+            android:paddingLeft="10dp"
             android:background="@drawable/edittext"
             android:layout_marginTop="10dp"
             android:hint="Email"
@@ -31,6 +43,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
         <EditText
+            android:paddingLeft="10dp"
             android:background="@drawable/edittext"
             android:layout_marginTop="10dp"
             android:hint="Contraseña"
@@ -46,11 +59,13 @@
             app:layout_constraintTop_toBottomOf="@+id/loginEmail" />
 
         <TextView
+            android:layout_margin="20dp"
+            android:textColor="@color/colorWhite"
             android:layout_marginTop="10dp"
             android:id="@+id/loginRegisterText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="¿Ya tienes cuenta? Inicia sesión aquí"
+            android:text="@string/login_account"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -58,14 +73,16 @@
             app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
         <Button
-            android:id="@+id/btn_registro"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:backgroundTint="@color/colorAccent"
+            android:id="@+id/btn_login_register"
+            android:background="@drawable/btn_login_first"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="@string/btn_registro_activity"/>
     </LinearLayout>
-
+    </ScrollView>
 
 
 

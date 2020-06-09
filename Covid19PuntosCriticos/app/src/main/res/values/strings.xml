@@ -8,6 +8,10 @@
     <string name="title_map">Map</string>
     <string name="title_country" >Country</string>
 
+    <string name="login_account">Log In here</string>
+    <string name="search">Search...</string>
+    <string name="step_register">Sign up with an email, either outlook or gmail.\nIt will have to be a valid email address, otherwise you will not be able to access it</string>
+
     <string name="fecha">Date </string>
     <string name="myDiagnosis">My Diagnosis</string>
     <string name="Poll">Poll</string>
@@ -94,9 +98,9 @@
         Practicing respiratory and hand hygiene is important at ALL times and the best way to protect yourself and others. \n
 
       Whenever possible, keep at least a meter of distance between you and others.
-        \n This is especially important if you are next to someone who is coughing or sneezing.
-        \n Because some infected people may not yet have symptoms or their symptoms may be mild,
-        \n you should keep a physical distance from everyone if you are in an area where the COVID-19 virus is circulating.
+        \nThis is especially important if you are next to someone who is coughing or sneezing.
+        \nBecause some infected people may not yet have symptoms or their symptoms may be mild,
+        \nyou should keep a physical distance from everyone if you are in an area where the COVID-19 virus is circulating.
     </string>
     <string name="recomendation">
         The confirmed symptoms of covid 19 have been 14, but you can be asymptomatic,
@@ -107,14 +111,13 @@
 
 
     <!-- About -->
-    <string name="info_app">
-        VirusSearch is an App that promises to provide updated information on the areas of greatest
-         \n infection of a specific virus, in the first stay this application will focus on the Covid-19
-         \n Due to the current situation, the application is easy to understand and interactive,
-         \n The key points to highlight are: the identification of danger sectors through a heat map according to
-         \n level of risk, official statistical information worldwide, also the development of digital self-management
-         \n through a form made by users to identify if they are carrying the virus, they can also go
-         \n updating your health status.
+    <string name="info_app" translatable="true">
+        VirusSearch is an App that promises to provide updated information on the areas of greatest infection of a specific virus,
+        in the first stay this application will focus on the Covid-19\nDue to the current situation,
+        the application is easy to understand and interactive,
+        The key points to highlight are: the identification of danger sectors through a heat map according to level of risk,
+        official statistical information worldwide, also the development of digital self-management through a form made by users to identify if they are carrying the virus,
+        they can also go updating your health status.
     </string>
 
 

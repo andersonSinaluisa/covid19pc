@@ -11,6 +11,11 @@
     <string name="Poll">Encuesta</string>
     <string name="Info">Info</string>
     <string name="fecha">Fecha </string>
+    <string name="search">Buscar..</string>
+    <string name="login_account">¿Ya tienes cuenta? Inicia sesión aquí </string>
+
+    <string name="step_register">Registrate con un correo electronico, ya sea outlook o gmail.\nTendra que ser un correo electronico valido de lo contrario no podra acceder</string>
+
 
     <string name="text_home">encuentra información relevante dando click en las tarjetas</string>
 
@@ -106,13 +111,7 @@
 
 
     <string name="info_app">
-        VirusSearch es una App que promete brindar información actualizada sobre las zonas de mayor
-        \n infección de un virus especifico, en primera estancia este aplicativo se centrará en el Covid-19
-        \n por la coyuntura por la que se está atravesando, el aplicativo es de fácil comprensión e interactivo,
-        \n los puntos claves a destacar son: la identificación de sectores de peligro a través de un mapa de calor según
-        \n nivel de riesgo, información estadística oficial a nivel mundial, también el desarrollo de un autotriaje digital
-        \n a través de un formulario realizado por los usuarios para identificar si portan el virus además estos pueden ir
-        \n actualizando su estado de salud.
+VirusSearch es una App que promete brindar información actualizada sobre las zonas de mayor infección de un virus especifico, en primera instancia este aplicativo se centrará en el Covid-19 por la coyuntura por la que se está atravesando, el aplicativo es de fácil comprensión e interactivo, los puntos claves a destacar son: la identificación de sectores de peligro a través de un mapa de calor según nivel de riesgo, información estadística oficial a nivel mundial, también el desarrollo de un autotriaje digital a través de un formulario realizado por los usuarios para identificar si portan el virus además estos pueden irá actualizando su estado de salud.
     </string>
     <string name="st_about_as">
 
