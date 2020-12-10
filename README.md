@@ -12,4 +12,4 @@ Google Map api
 Firebase Auth
 Geolocation
 
-
+[Descargar el apk aqui](https://drive.google.com/file/d/1SBekOBEZXGdxQmT3t2DC4ilpkhUCm2TY/view?usp=sharing)	
